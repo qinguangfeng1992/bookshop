@@ -6,14 +6,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
+
 /**
  * Created by Administrator on 2016/10/6.
  */
 @SpringBootApplication
-@ComponentScan({"com.fc","com.hzit.serviceAll","com.hzit.controllerAll"})
 @MapperScan("com.hzit.dao.mapper")
+@ComponentScan({"com.hzit.serviceAll","com.fc","com.hzit.controllerAll"})
 public class Starter extends SpringBootServletInitializer{
+    public Starter(){
+        System.out.println("启动SpringApplication");
+    }
     public static void main(String[] args) {
-        SpringApplication.run(Starter.class,args);
+        SpringApplication.run(Starter.class, args);
     }
 }
