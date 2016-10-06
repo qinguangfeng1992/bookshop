@@ -1,5 +1,6 @@
 package com.hzit.serviceAll;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
 
 import java.util.List;
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface BookQin {
     public List<Book> findBookAll();
+
+    public Page<Book> findPage(int page, int rowcount);
 }

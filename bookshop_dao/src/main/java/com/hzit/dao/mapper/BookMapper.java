@@ -12,9 +12,9 @@ public interface BookMapper {
 
 	void insertBook(Book book);
 
-	void deleteBookByBookid(String bookid);
+	int deleteBookByBookid(String bookid);
 
-	void updateBook(Book book);
+	int updateBook(Book book);
 
 	Page<Book> searchBookByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
