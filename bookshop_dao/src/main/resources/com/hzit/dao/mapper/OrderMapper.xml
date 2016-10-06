@@ -42,7 +42,7 @@
     </sql>
 
     <insert id="insertOrder" parameterType="com.hzit.dao.entity.Order">
-        INSERT INTO order(
+        INSERT INTO `order`(
         <include refid="orderBaseColumnSql"/>
         )VALUES(
             #{orderid},
@@ -57,11 +57,11 @@
 
     
     <delete id="deleteOrderByOrderid" parameterType="String">
-        DELETE FROM order WHERE orderid = #{orderid}
+        DELETE FROM `order` WHERE orderid = #{orderid}
     </delete>
 
     <update id="updateOrder" parameterType="com.hzit.dao.entity.Order">
-        UPDATE order
+        UPDATE `order`
         <set>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookid)">
                 bookid = #{bookid} ,
@@ -88,7 +88,7 @@
     <select id="searchOrderByParams" parameterType="map" resultMap="orderMap">
         SELECT
         <include refid="orderBaseColumnSql"/>
-        FROM order
+        FROM `order`
         <include refid="orderBaseWhereSql"/>
     </select>
 
