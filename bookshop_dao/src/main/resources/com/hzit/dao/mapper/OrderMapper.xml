@@ -9,7 +9,8 @@
         ordertime,
         orderprice,
         orderstatu,
-        orderdelete
+        orderdelete,
+        userid
     </sql>
 
     <sql id="orderBaseWhereSql">
@@ -33,6 +34,9 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderdelete)">
                     AND orderdelete = #{map.orderdelete}
                 </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                    AND userid = #{map.userid}
+                </if>
             </where>
         </if>
     </sql>
@@ -46,7 +50,8 @@
             #{ordertime},
             #{orderprice},
             #{orderstatu},
-            #{orderdelete}
+            #{orderdelete},
+            #{userid}
         )
     </insert>
 
@@ -73,6 +78,9 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderdelete)">
                 orderdelete = #{orderdelete} ,
             </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userid)">
+                userid = #{userid} ,
+            </if>
         </set>
         WHERE orderid = #{orderid}
     </update>
@@ -91,6 +99,7 @@
         <result column="orderprice" property="orderprice"/>
         <result column="orderstatu" property="orderstatu"/>
         <result column="orderdelete" property="orderdelete"/>
+        <result column="userid" property="userid"/>
     </resultMap>
 
 </mapper>

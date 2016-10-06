@@ -2,7 +2,7 @@ package com.hzit.dao.entity;
 
 /**
  * 
- * @author qinguangfeng
+ * @author HOU
  */
 public class Orderdetail {
 	/**
@@ -21,6 +21,10 @@ public class Orderdetail {
 	 *  订单ID
 	 */
 	private String orderid;
+	/**
+	 *  用户id
+	 */
+	private String userid;
 	/**
 	 * 订单详细信息的ID
 	 * @param orderdatailid
@@ -80,5 +84,20 @@ public class Orderdetail {
      */	
     public String getOrderid(){
     	return orderid;
+    }
+	/**
+	 * 用户id
+	 * @param userid
+	 */
+	public void setUserid(String userid){
+		this.userid = userid;
+	}
+	
+    /**
+     * 用户id
+     * @return
+     */	
+    public String getUserid(){
+    	return userid;
     }
 }

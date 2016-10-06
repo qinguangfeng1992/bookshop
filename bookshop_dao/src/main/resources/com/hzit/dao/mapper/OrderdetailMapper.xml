@@ -7,7 +7,8 @@
         orderdatailid,
         num,
         bookid,
-        orderid
+        orderid,
+        userid
     </sql>
 
     <sql id="orderdetailBaseWhereSql">
@@ -25,6 +26,9 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderid)">
                     AND orderid = #{map.orderid}
                 </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                    AND userid = #{map.userid}
+                </if>
             </where>
         </if>
     </sql>
@@ -36,7 +40,8 @@
             #{orderdatailid},
             #{num},
             #{bookid},
-            #{orderid}
+            #{orderid},
+            #{userid}
         )
     </insert>
 
@@ -57,6 +62,9 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderid)">
                 orderid = #{orderid} ,
             </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userid)">
+                userid = #{userid} ,
+            </if>
         </set>
         WHERE orderdatailid = #{orderdatailid}
     </update>
@@ -73,6 +81,7 @@
         <result column="num" property="num"/>
         <result column="bookid" property="bookid"/>
         <result column="orderid" property="orderid"/>
+        <result column="userid" property="userid"/>
     </resultMap>
 
 </mapper>

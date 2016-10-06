@@ -2,7 +2,7 @@ package com.hzit.dao.vo;
 
 /**
  * 
- * @author qinguangfeng
+ * @author HOU
  */
 public class OrderdetailVo {
 	/**
@@ -21,6 +21,10 @@ public class OrderdetailVo {
 	 *  订单ID
 	 */
 	private String orderid;
+	/**
+	 *  用户id
+	 */
+	private String userid;
 	/**
 	 * 订单详细信息的ID
 	 * @param orderdatailid
@@ -80,5 +84,20 @@ public class OrderdetailVo {
      */	
     public String getOrderid(){
     	return orderid;
+    }
+	/**
+	 * 用户id
+	 * @param userid
+	 */
+	public void setUserid(String userid){
+		this.userid = userid;
+	}
+	
+    /**
+     * 用户id
+     * @return String
+     */	
+    public String getUserid(){
+    	return userid;
     }
 }
