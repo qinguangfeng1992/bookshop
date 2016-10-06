@@ -1,23 +1,29 @@
-import com.fc.platform.commons.page.Page;
-/*import com.qinguangfeng.Start;
-import com.qinguangfeng.dao.entity.Topic;
-import com.qinguangfeng.services.LogicTopic;*/
+
+import com.hzit.Starter;
+import com.hzit.dao.entity.Book;
+import com.hzit.serviceAll.serviceImpl.BookImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
-/*@SpringApplicationConfiguration(value = Start.class)*/
+@SpringApplicationConfiguration(value = Starter.class)
 public class TestOne {
 
-
+@Autowired
+private BookImpl bookImpl;
     @Test
-    public void testFindAll() {
-
+    public void testFindBookAll() {
+       List<Book> list= bookImpl.findBookAll();
+        for (Book b:list){
+            System.out.println(b.getBookname());
+        }
     }
 
 
