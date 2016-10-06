@@ -1,4 +1,4 @@
-package com.qinguangfeng.dao.vo;
+package com.hzit.dao.vo;
 
 /**
  * 

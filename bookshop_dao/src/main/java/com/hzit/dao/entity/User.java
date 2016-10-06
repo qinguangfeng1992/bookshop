@@ -1,10 +1,10 @@
-package com.qinguangfeng.dao.vo;
+package com.hzit.dao.entity;
 
 /**
  * 
  * @author qinguangfeng
  */
-public class UserVo {
+public class User {
 	/**
 	 *  用户ID
 	 */
@@ -27,7 +27,7 @@ public class UserVo {
 	
     /**
      * 用户ID
-     * @return String
+     * @return
      */	
     public String getUserid(){
     	return userid;
@@ -42,7 +42,7 @@ public class UserVo {
 	
     /**
      * 用户名
-     * @return String
+     * @return
      */	
     public String getUsername(){
     	return username;
@@ -57,7 +57,7 @@ public class UserVo {
 	
     /**
      * 用户密码
-     * @return String
+     * @return
      */	
     public String getUserpwd(){
     	return userpwd;

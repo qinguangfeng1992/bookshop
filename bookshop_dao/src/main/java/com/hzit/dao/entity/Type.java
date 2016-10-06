@@ -1,4 +1,4 @@
-package com.qinguangfeng.dao.entity;
+package com.hzit.dao.entity;
 
 /**
  * 

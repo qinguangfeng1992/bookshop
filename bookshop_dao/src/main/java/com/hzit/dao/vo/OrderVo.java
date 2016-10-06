@@ -1,10 +1,10 @@
-package com.qinguangfeng.dao.entity;
+package com.hzit.dao.vo;
 
 /**
  * 
  * @author qinguangfeng
  */
-public class Order {
+public class OrderVo {
 	/**
 	 *  订单ID
 	 */
@@ -39,7 +39,7 @@ public class Order {
 	
     /**
      * 订单ID
-     * @return
+     * @return String
      */	
     public String getOrderid(){
     	return orderid;
@@ -54,7 +54,7 @@ public class Order {
 	
     /**
      * 图书ID
-     * @return
+     * @return String
      */	
     public String getBookid(){
     	return bookid;
@@ -69,7 +69,7 @@ public class Order {
 	
     /**
      * 订单创建时间
-     * @return
+     * @return String
      */	
     public String getOrdertime(){
     	return ordertime;
@@ -84,7 +84,7 @@ public class Order {
 	
     /**
      * 订单价格
-     * @return
+     * @return Integer
      */	
     public Integer getOrderprice(){
     	return orderprice;
@@ -99,7 +99,7 @@ public class Order {
 	
     /**
      * 订单状态，付了还是没付
-     * @return
+     * @return String
      */	
     public String getOrderstatu(){
     	return orderstatu;
@@ -114,7 +114,7 @@ public class Order {
 	
     /**
      * 订单假删
-     * @return
+     * @return String
      */	
     public String getOrderdelete(){
     	return orderdelete;

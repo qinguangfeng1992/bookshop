@@ -1,10 +1,10 @@
-package com.qinguangfeng.dao.entity;
+package com.hzit.dao.vo;
 
 /**
  * 
  * @author qinguangfeng
  */
-public class Orderdetail {
+public class OrderdetailVo {
 	/**
 	 *  订单详细信息的ID
 	 */
@@ -31,7 +31,7 @@ public class Orderdetail {
 	
     /**
      * 订单详细信息的ID
-     * @return
+     * @return String
      */	
     public String getOrderdatailid(){
     	return orderdatailid;
@@ -46,7 +46,7 @@ public class Orderdetail {
 	
     /**
      * 购买的数量
-     * @return
+     * @return String
      */	
     public String getNum(){
     	return num;
@@ -61,7 +61,7 @@ public class Orderdetail {
 	
     /**
      * 图书ID
-     * @return
+     * @return String
      */	
     public String getBookid(){
     	return bookid;
@@ -76,7 +76,7 @@ public class Orderdetail {
 	
     /**
      * 订单ID
-     * @return
+     * @return String
      */	
     public String getOrderid(){
     	return orderid;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.qinguangfeng.dao.mapper.OrderMapper">
+<mapper namespace="com.hzit.dao.mapper.OrderMapper">
 
     <sql id="orderBaseColumnSql">
         orderid,
@@ -37,7 +37,7 @@
         </if>
     </sql>
 
-    <insert id="insertOrder" parameterType="com.qinguangfeng.dao.entity.Order">
+    <insert id="insertOrder" parameterType="com.hzit.dao.entity.Order">
         INSERT INTO order(
         <include refid="orderBaseColumnSql"/>
         )VALUES(
@@ -55,7 +55,7 @@
         DELETE FROM order WHERE orderid = #{orderid}
     </delete>
 
-    <update id="updateOrder" parameterType="com.qinguangfeng.dao.entity.Order">
+    <update id="updateOrder" parameterType="com.hzit.dao.entity.Order">
         UPDATE order
         <set>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookid)">
@@ -84,7 +84,7 @@
         <include refid="orderBaseWhereSql"/>
     </select>
 
-    <resultMap type="com.qinguangfeng.dao.entity.Order" id="orderMap">
+    <resultMap type="com.hzit.dao.entity.Order" id="orderMap">
         <id column="orderid" property="orderid"/>
         <result column="bookid" property="bookid"/>
         <result column="ordertime" property="ordertime"/>

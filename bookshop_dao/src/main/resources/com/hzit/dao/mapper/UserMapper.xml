@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.qinguangfeng.dao.mapper.UserMapper">
+<mapper namespace="com.hzit.dao.mapper.UserMapper">
 
     <sql id="userBaseColumnSql">
         userid,
@@ -25,7 +25,7 @@
         </if>
     </sql>
 
-    <insert id="insertUser" parameterType="com.qinguangfeng.dao.entity.User">
+    <insert id="insertUser" parameterType="com.hzit.dao.entity.User">
         INSERT INTO user(
         <include refid="userBaseColumnSql"/>
         )VALUES(
@@ -40,7 +40,7 @@
         DELETE FROM user WHERE userid = #{userid}
     </delete>
 
-    <update id="updateUser" parameterType="com.qinguangfeng.dao.entity.User">
+    <update id="updateUser" parameterType="com.hzit.dao.entity.User">
         UPDATE user
         <set>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(username)">
@@ -60,7 +60,7 @@
         <include refid="userBaseWhereSql"/>
     </select>
 
-    <resultMap type="com.qinguangfeng.dao.entity.User" id="userMap">
+    <resultMap type="com.hzit.dao.entity.User" id="userMap">
         <id column="userid" property="userid"/>
         <result column="username" property="username"/>
         <result column="userpwd" property="userpwd"/>

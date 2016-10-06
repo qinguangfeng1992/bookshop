@@ -1,10 +1,10 @@
-package com.qinguangfeng.dao.mapper;
+package com.hzit.dao.mapper;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import com.qinguangfeng.dao.entity.User;
+import com.hzit.dao.entity.User;
 import com.fc.platform.commons.page.Page;
 import com.fc.platform.commons.page.Pageable;
 
