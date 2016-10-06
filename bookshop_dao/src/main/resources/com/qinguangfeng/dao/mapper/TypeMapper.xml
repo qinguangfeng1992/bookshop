@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qinguangfeng.dao.mapper.TypeMapper">
+
+    <sql id="typeBaseColumnSql">
+        booktypeid,
+        bookname,
+        parenttypeid
+    </sql>
+
+    <sql id="typeBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.booktypeid)">
+                    booktypeid = #{map.booktypeid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookname)">
+                    AND bookname = #{map.bookname}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.parenttypeid)">
+                    AND parenttypeid = #{map.parenttypeid}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertType" parameterType="com.qinguangfeng.dao.entity.Type">
+        INSERT INTO type(
+        <include refid="typeBaseColumnSql"/>
+        )VALUES(
+            #{booktypeid},
+            #{bookname},
+            #{parenttypeid}
+        )
+    </insert>
+
+    
+    <delete id="deleteTypeByBooktypeid" parameterType="String">
+        DELETE FROM type WHERE booktypeid = #{booktypeid}
+    </delete>
+
+    <update id="updateType" parameterType="com.qinguangfeng.dao.entity.Type">
+        UPDATE type
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookname)">
+                bookname = #{bookname} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(parenttypeid)">
+                parenttypeid = #{parenttypeid} ,
+            </if>
+        </set>
+        WHERE booktypeid = #{booktypeid}
+    </update>
+
+    <select id="searchTypeByParams" parameterType="map" resultMap="typeMap">
+        SELECT
+        <include refid="typeBaseColumnSql"/>
+        FROM type
+        <include refid="typeBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.qinguangfeng.dao.entity.Type" id="typeMap">
+        <id column="booktypeid" property="booktypeid"/>
+        <result column="bookname" property="bookname"/>
+        <result column="parenttypeid" property="parenttypeid"/>
+    </resultMap>
+
+</mapper>

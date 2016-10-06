@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qinguangfeng.dao.mapper.OrderMapper">
+
+    <sql id="orderBaseColumnSql">
+        orderid,
+        bookid,
+        ordertime,
+        orderprice,
+        orderstatu,
+        orderdelete
+    </sql>
+
+    <sql id="orderBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderid)">
+                    orderid = #{map.orderid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookid)">
+                    AND bookid = #{map.bookid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.ordertime)">
+                    AND ordertime = #{map.ordertime}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderprice)">
+                    AND orderprice = #{map.orderprice}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderstatu)">
+                    AND orderstatu = #{map.orderstatu}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderdelete)">
+                    AND orderdelete = #{map.orderdelete}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertOrder" parameterType="com.qinguangfeng.dao.entity.Order">
+        INSERT INTO order(
+        <include refid="orderBaseColumnSql"/>
+        )VALUES(
+            #{orderid},
+            #{bookid},
+            #{ordertime},
+            #{orderprice},
+            #{orderstatu},
+            #{orderdelete}
+        )
+    </insert>
+
+    
+    <delete id="deleteOrderByOrderid" parameterType="String">
+        DELETE FROM order WHERE orderid = #{orderid}
+    </delete>
+
+    <update id="updateOrder" parameterType="com.qinguangfeng.dao.entity.Order">
+        UPDATE order
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookid)">
+                bookid = #{bookid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(ordertime)">
+                ordertime = #{ordertime} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderprice)">
+                orderprice = #{orderprice} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderstatu)">
+                orderstatu = #{orderstatu} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderdelete)">
+                orderdelete = #{orderdelete} ,
+            </if>
+        </set>
+        WHERE orderid = #{orderid}
+    </update>
+
+    <select id="searchOrderByParams" parameterType="map" resultMap="orderMap">
+        SELECT
+        <include refid="orderBaseColumnSql"/>
+        FROM order
+        <include refid="orderBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.qinguangfeng.dao.entity.Order" id="orderMap">
+        <id column="orderid" property="orderid"/>
+        <result column="bookid" property="bookid"/>
+        <result column="ordertime" property="ordertime"/>
+        <result column="orderprice" property="orderprice"/>
+        <result column="orderstatu" property="orderstatu"/>
+        <result column="orderdelete" property="orderdelete"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qinguangfeng.dao.mapper.OrderdetailMapper">
+
+    <sql id="orderdetailBaseColumnSql">
+        orderdatailid,
+        num,
+        bookid,
+        orderid
+    </sql>
+
+    <sql id="orderdetailBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderdatailid)">
+                    orderdatailid = #{map.orderdatailid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.num)">
+                    AND num = #{map.num}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookid)">
+                    AND bookid = #{map.bookid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderid)">
+                    AND orderid = #{map.orderid}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertOrderdetail" parameterType="com.qinguangfeng.dao.entity.Orderdetail">
+        INSERT INTO orderdetail(
+        <include refid="orderdetailBaseColumnSql"/>
+        )VALUES(
+            #{orderdatailid},
+            #{num},
+            #{bookid},
+            #{orderid}
+        )
+    </insert>
+
+    
+    <delete id="deleteOrderdetailByOrderdatailid" parameterType="String">
+        DELETE FROM orderdetail WHERE orderdatailid = #{orderdatailid}
+    </delete>
+
+    <update id="updateOrderdetail" parameterType="com.qinguangfeng.dao.entity.Orderdetail">
+        UPDATE orderdetail
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(num)">
+                num = #{num} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookid)">
+                bookid = #{bookid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderid)">
+                orderid = #{orderid} ,
+            </if>
+        </set>
+        WHERE orderdatailid = #{orderdatailid}
+    </update>
+
+    <select id="searchOrderdetailByParams" parameterType="map" resultMap="orderdetailMap">
+        SELECT
+        <include refid="orderdetailBaseColumnSql"/>
+        FROM orderdetail
+        <include refid="orderdetailBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.qinguangfeng.dao.entity.Orderdetail" id="orderdetailMap">
+        <id column="orderdatailid" property="orderdatailid"/>
+        <result column="num" property="num"/>
+        <result column="bookid" property="bookid"/>
+        <result column="orderid" property="orderid"/>
+    </resultMap>
+
+</mapper>
