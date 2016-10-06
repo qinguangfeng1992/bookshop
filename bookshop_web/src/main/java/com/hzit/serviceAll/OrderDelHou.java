@@ -1,6 +1,7 @@
 package com.hzit.serviceAll;
 
-import com.hzit.dao.entity.Order;
+import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Orderdetail;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,15 +19,27 @@ public interface OrderDelHou {
     public Integer deleteOrder(String OrderId);
 
     /**
-     * 查询全部总价
+     * 创建一张订单
      * @return
      */
-    public Integer Allorder(String bookid);
+    public Integer Allorder(String bookid, String userid);
 
     /**
-     * 查询全部总价
+     * 创建一张订单在修改一张订单 数量
      * @return
      */
-    public List<Order> Aorder();
+    public Integer updateorder(String Num);
 
+    /**
+     * 查询当前用户的所有订单
+     * @return
+     */
+    public List<Orderdetail> Aorder(String userid);
+
+    /**
+     * 查询单个图书
+     * @param bookid
+     * @return
+     */
+    public Book bookA(String bookid);
 }
