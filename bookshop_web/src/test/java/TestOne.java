@@ -2,7 +2,7 @@
 import com.hzit.Starter;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.vo.BookVo;
-import com.hzit.serviceAll.serviceImpl.BookImpl;
+import com.hzit.service.serviceImpl.BookImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

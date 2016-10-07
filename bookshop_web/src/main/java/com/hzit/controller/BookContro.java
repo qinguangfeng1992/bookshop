@@ -1,10 +1,10 @@
-package com.hzit.controllerAll;
+package com.hzit.controller;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Type;
 import com.hzit.dao.vo.BookVo;
-import com.hzit.serviceAll.BookQin;
+import com.hzit.service.BookQin;
 /*
 import com.hzit.serviceAll.BookType;*/
 import org.springframework.beans.factory.annotation.Autowired;
