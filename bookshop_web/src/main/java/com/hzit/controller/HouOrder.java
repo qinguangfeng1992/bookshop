@@ -2,6 +2,7 @@ package com.hzit.controller;
 
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
+import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.BookVoHou;
 import com.hzit.service.BookQin;
 import com.hzit.service.OrderDelHou;
@@ -67,15 +68,30 @@ public class HouOrder {
     @RequestMapping("/shoppingcart")
     public String gouwu(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session){
         String userid = "1";
+        List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
+        bookid=new String[]{"1","5"};
+        //添加数据
+        for (int i = 0; i <orderdetail.size() ; i++) {
+            for (int j = 0; j <bookid.length ; j++) {
+                if (orderdetail.get(i).getBookid().equals(bookid[j])){
+                    Integer num=Integer.parseInt(orderdetail.get(i).getNum());
+                    num+=1;
+                    orderAll.updateorder(num.toString(),orderdetail.get(i).getOrderdatailid());
+                }else{
+                    orderAll.Allorder(bookid[j],userid);
+                }
+            }
+        }
+
         //获取当前用户的订单
         List<BookVoHou> listbook=(List<BookVoHou>)session.getAttribute("bookvohou");
         if (listbook==null) {
             listbook = new ArrayList<BookVoHou>();
         }
-        List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
+        List<Orderdetail> orderdetai=orderAll.Aorder(userid);//查询用户订单
         BookVoHou bookvo=new BookVoHou();
-        for (int i = 0; i <orderdetail.size() ; i++) {
-            Orderdetail order=orderdetail.get(i);
+        for (int i = 0; i <orderdetai.size() ; i++) {
+            Orderdetail order=orderdetai.get(i);
             Book book=orderAll.bookA(order.getBookid());
 
             bookvo.setBookstore(book.getBookstore());//库存
