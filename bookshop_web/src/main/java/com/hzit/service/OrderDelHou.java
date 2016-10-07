@@ -43,4 +43,8 @@ public interface OrderDelHou {
      * @return
      */
     public Book bookA(String bookid);
+    /**
+     * 查询用户订单中是否有此书籍
+     */
+    public Boolean userbookcart(String bookid,String userid);
 }

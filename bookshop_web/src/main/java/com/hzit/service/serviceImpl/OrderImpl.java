@@ -76,5 +76,17 @@ public class OrderImpl implements OrderDelHou {
         return listbook.get(0);
     }
 
+    @Override
+    public Boolean userbookcart(String bookid,String userid) {
+        Map map=new HashMap();
+        map.put("bookid",bookid);
+        map.put("userid",userid);
+        List<Orderdetail> orderdetailList=orderdetailMapper.searchOrderdetailByParams(map);
+        if (orderdetailList.size()==0)
+            return false;
+        else
+            return true;
+    }
+
 
 }
