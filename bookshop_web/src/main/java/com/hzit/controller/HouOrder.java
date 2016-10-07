@@ -2,6 +2,7 @@ package com.hzit.controller;
 
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
+import com.hzit.dao.vo.BookVoHou;
 import com.hzit.service.BookQin;
 import com.hzit.service.OrderDelHou;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
@@ -62,7 +62,36 @@ public class HouOrder {
     }
     @RequestMapping("/totoorderlist")
     public String toorderlist(){
-
         return "shopping";
+    }
+    @RequestMapping("/shoppingcart")
+    public String gouwu(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session){
+        String userid = "1";
+        //获取当前用户的订单
+        List<BookVoHou> listbook=(List<BookVoHou>)session.getAttribute("bookvohou");
+        if (listbook==null) {
+            listbook = new ArrayList<BookVoHou>();
+        }
+        List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
+        BookVoHou bookvo=new BookVoHou();
+        for (int i = 0; i <orderdetail.size() ; i++) {
+            Orderdetail order=orderdetail.get(i);
+            Book book=orderAll.bookA(order.getBookid());
+
+            bookvo.setBookstore(book.getBookstore());//库存
+            bookvo.setBooktime(book.getBooktime());//时间
+            bookvo.setBookname(book.getBookname());//名字
+            bookvo.setBookprice(book.getBookprice());//价格
+            bookvo.setBookauthor(book.getBookauthor());
+            bookvo.setBookdelete(book.getBookdelete());
+            bookvo.setBookid(book.getBookid());
+            bookvo.setBooktypeid(book.getBooktypeid());
+            bookvo.setBookurl(book.getBookurl());
+            bookvo.setCount(order.getNum());
+            listbook.add(bookvo);
+
+        }
+        session.setAttribute("bookvohou",listbook);
+        return "redirect:/hou/totoorderlist";
     }
 }
