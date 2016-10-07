@@ -66,7 +66,7 @@ public class HouOrder {
     }
 
     @RequestMapping("/totoorderlist")
-    public String toorderlist(){
+    public String toorderlist(ModelMap modelMap){
         return "shopping";
     }
 
