@@ -69,21 +69,9 @@ public class OrderImpl implements OrderDelHou {
     @Override
     public Book bookA(String bookid){
         Map map=new HashMap();
-        Book b=new Book();
         map.put("bookid",bookid);
         List<Book> listbook=bookMapper.searchBookByParams(map);
-        for (Book l:listbook) {
-            b.setBookid(l.getBookid());
-            b.setBookauthor(l.getBookauthor());
-            b.setBookdelete(l.getBookdelete());
-            b.setBookname(l.getBookname());
-            b.setBookprice(l.getBookprice());
-            b.setBookstore(l.getBookstore());
-            b.setBooktime(l.getBooktime());
-            b.setBooktypeid(l.getBooktypeid());
-            b.setBookurl(l.getBookurl());
-        }
-        return b;
+        return listbook.get(0);
     }
 
 

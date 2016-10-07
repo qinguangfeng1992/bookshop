@@ -1,9 +1,9 @@
-package com.hzit.controllerAll;
+package com.hzit.controller;
 
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
-import com.hzit.serviceAll.BookQin;
-import com.hzit.serviceAll.OrderDelHou;
+import com.hzit.service.BookQin;
+import com.hzit.service.OrderDelHou;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
