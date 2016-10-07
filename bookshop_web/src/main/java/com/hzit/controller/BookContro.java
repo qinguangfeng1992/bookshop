@@ -1,12 +1,10 @@
 package com.hzit.controller;
 
 import com.fc.platform.commons.page.Page;
-import com.hzit.dao.entity.Book;
-import com.hzit.dao.entity.Type;
+
 import com.hzit.dao.vo.BookVo;
 import com.hzit.service.BookQin;
-/*
-import com.hzit.serviceAll.BookType;*/
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -48,14 +46,6 @@ public class BookContro {
 
     }
 
-/*    //解决分组查询的 控制器
-    @RequestMapping("/typeall")
 
-    public String getTypeList(ModelMap modelMap) {
-       List<Type>tlist= typeImpl.findTypeAll();
-        modelMap.put("tlist",tlist);
-        return "index";
-
-    }*/
 
 }
