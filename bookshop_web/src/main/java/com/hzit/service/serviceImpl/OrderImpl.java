@@ -53,9 +53,10 @@ public class OrderImpl implements OrderDelHou {
     }
     //暂时为空
     @Override
-    public Integer updateorder(String Num) {
+    public Integer updateorder(String Num,String bookid) {
         Orderdetail orderdetail=new Orderdetail();
         orderdetail.setNum(Num);
+        orderdetail.setBookid(bookid);
         orderdetailMapper.updateOrderdetail(orderdetail);
         return 1;
     }

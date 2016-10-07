@@ -34,11 +34,11 @@
 					<th class="nums">数量</th>
 					<th class="price">价格</th>
 				</tr>
-				<c:forEach items="${book}" var="ord">
+				<c:forEach items="${bookvohou}" var="ord">
 				<tr>
 					<td class="thumb"><img src="${ord.bookurl}" /></td>
 					<td class="title">${ord.bookname}</td>
-					<td><input class="input-text" type="text" name="nums" value="1"/></td>
+					<td><input class="input-text" type="text" name="nums" value="${ord.count}"/></td>
 					<td>￥<span>${ord.bookprice}</span></td>
 				</tr>
 				</c:forEach>
