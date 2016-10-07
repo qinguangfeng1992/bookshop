@@ -1,10 +1,11 @@
-package com.hzit.serviceAll.serviceImpl;
+package com.hzit.service.serviceImpl;
 
 import com.fc.platform.commons.page.Page;
 import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.mapper.BookMapper;
-import com.hzit.serviceAll.BookQin;
+import com.hzit.dao.vo.BookVo;
+import com.hzit.service.BookQin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +20,15 @@ public class BookImpl implements BookQin {
     private BookMapper bookMapper;
 
     @Override
-    public List<Book> findBookAll() {
-        return bookMapper.searchBookByParams(null);
+    public List<BookVo> findBookAll() {
+        return bookMapper.findBookByParams(null);
     }
     @Override
-    public Page<Book> findPage(int page, int rowcount) {
+    public Page<BookVo> findPage(int page, int rowcount) {
 
         PageRequest pg = new PageRequest(page, rowcount);
 
-        Page<Book> data = bookMapper.searchBookByParams(null, pg);
+        Page<BookVo> data = bookMapper.findBookByParams(null, pg);
 
         return data;
 

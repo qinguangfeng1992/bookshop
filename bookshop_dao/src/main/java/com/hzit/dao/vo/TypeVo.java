@@ -12,7 +12,7 @@ public class TypeVo {
 	/**
 	 *  图书类型的名字
 	 */
-	private String bookname;
+	private String typename;
 	/**
 	 *  
 	 */
@@ -34,18 +34,18 @@ public class TypeVo {
     }
 	/**
 	 * 图书类型的名字
-	 * @param bookname
+	 * @param typename
 	 */
-	public void setBookname(String bookname){
-		this.bookname = bookname;
+	public void setTypename(String typename){
+		this.typename = typename;
 	}
 	
     /**
      * 图书类型的名字
      * @return String
      */	
-    public String getBookname(){
-    	return bookname;
+    public String getTypename(){
+    	return typename;
     }
 	/**
 	 * 

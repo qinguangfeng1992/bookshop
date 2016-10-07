@@ -21,10 +21,10 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li class="current"><a href="index.html">User首页</a></li>
-        <li><a href="orderlist.html">我的订单</a></li>
+        <li class="current"><a href="#">用户：${user.username}</a></li>
+        <li><a href="toorderlist">我的订单</a></li>
         <li><a href="shopping.html">购物车</a></li>
-        <li><a href="#">注销</a></li>
+        <li><a href="logout">注销</a></li>
       </ul>
     </div>
     <form method="get" name="search" action="">
@@ -36,7 +36,6 @@
   <div class="list bookList">
     <form method="post" name="shoping" action="orderlist">
       <table>
-
         <tr class="title">
           <th class="checker"></th>
           <th>书名</th>
@@ -49,36 +48,29 @@
         </tr>
         <%-- EL表达式的地方--%>
 <c:forEach items="${list.content}" var="slist">
- <tr>
+        <tr>
           <td><input type="checkbox" name="bookid" value="${slist.bookid}" /></td>
           <td class="title">${slist.bookname}</td>
           <td>${slist.bookprice}</td>
           <td>${slist.bookstore}</td>
           <td>${slist.bookauthor}</td>
           <td>${slist.booktime}</td>
-          <td>${slist.booktypeid}</td>
-          <td class="thumb"><img src="images/book/book_01.gif" /></td>
+          <td>${slist.typename}</td>
+          <td class="thumb" ><img width="150px" src="${slist.bookurl}" /></td>
         </tr>
-
 </c:forEach>
-
       </table>
-
-
 
 <%-- 分页--%>
       <div class="page-spliter">
-
-        <a href="bookindex?page=${currpage-1}">&lt;</a>
+        <a href="bookindex?page=${currpage-1}">&lt;&lt;</a>
         <a href="bookindex">首页</a>
-
         <c:forEach var="p" begin="0" end="${list.totalPages-1}">
         <a href="bookindex?page=${p}">${p+1}</a>
         </c:forEach>
         <span>...</span>
         <a href="bookindex?page=${list.totalPages-1}">尾页</a>
-        <a href="bookindex?page=${currpage+1}">&gt;</a>
-
+        <a href="bookindex?page=${currpage+1}">&gt;&gt;</a>
       </div>
       <div class="button"><input class="input-btn" type="submit" name="submit" value="" /></div>
     </form>

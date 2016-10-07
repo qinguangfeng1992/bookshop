@@ -1,7 +1,8 @@
-package com.hzit.serviceAll;
+package com.hzit.service;
 
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
+import com.hzit.dao.vo.BookVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public interface OrderDelHou {
      * 创建一张订单在修改一张订单 数量
      * @return
      */
-    public Integer updateorder(String Num);
+    public Integer updateorder(String Num,String bookid);
 
     /**
      * 查询当前用户的所有订单

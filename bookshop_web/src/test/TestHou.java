@@ -1,6 +1,8 @@
 import com.hzit.Starter;
+import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
-import com.hzit.serviceAll.OrderDelHou;
+import com.hzit.dao.vo.BookVo;
+import com.hzit.service.OrderDelHou;
 
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Test;
@@ -33,6 +35,7 @@ public class TestHou {
     }
     @Test
     public void update(){
-        System.out.println(orderDelHou.updateorder("23"));
+        Book book=orderDelHou.bookA("1");
+        System.out.println(book);
     }
 }

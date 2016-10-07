@@ -4,7 +4,7 @@ package com.hzit.dao.vo;
  * 
  * @author qinguangfeng
  */
-public class BookVo {
+public class BookVoHou {
 	/**
 	 *  ID
 	 */
@@ -42,19 +42,18 @@ public class BookVo {
 	 */
 	private String booktypeid;
 
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
 	/**
-	 *  图书表的图书类型的名字
+	 * 图书的数量
 	 */
-	private String typename;
-
-	public String getTypename() {
-		return typename;
-	}
-
-	public void setTypename(String typename) {
-		this.typename = typename;
-	}
-
+	private String count;
 	/**
 	 * ID
 	 * @param bookid

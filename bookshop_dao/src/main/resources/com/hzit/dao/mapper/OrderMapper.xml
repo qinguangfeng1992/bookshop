@@ -55,6 +55,7 @@
         )
     </insert>
 
+
     
     <delete id="deleteOrderByOrderid" parameterType="String">
         DELETE FROM `order` WHERE orderid = #{orderid}
@@ -92,6 +93,7 @@
         <include refid="orderBaseWhereSql"/>
     </select>
 
+
     <resultMap type="com.hzit.dao.entity.Order" id="orderMap">
         <id column="orderid" property="orderid"/>
         <result column="bookid" property="bookid"/>
@@ -101,5 +103,6 @@
         <result column="orderdelete" property="orderdelete"/>
         <result column="userid" property="userid"/>
     </resultMap>
+
 
 </mapper>

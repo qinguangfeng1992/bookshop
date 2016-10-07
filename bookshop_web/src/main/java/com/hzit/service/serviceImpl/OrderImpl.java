@@ -1,11 +1,12 @@
-package com.hzit.serviceAll.serviceImpl;
+package com.hzit.service.serviceImpl;
 
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.mapper.BookMapper;
 import com.hzit.dao.mapper.OrderMapper;
 import com.hzit.dao.mapper.OrderdetailMapper;
-import com.hzit.serviceAll.OrderDelHou;
+import com.hzit.dao.vo.BookVo;
+import com.hzit.service.OrderDelHou;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,9 +54,10 @@ public class OrderImpl implements OrderDelHou {
     }
     //暂时为空
     @Override
-    public Integer updateorder(String Num) {
+    public Integer updateorder(String Num,String bookid) {
         Orderdetail orderdetail=new Orderdetail();
         orderdetail.setNum(Num);
+        orderdetail.setOrderdatailid(bookid);
         orderdetailMapper.updateOrderdetail(orderdetail);
         return 1;
     }
@@ -69,21 +71,9 @@ public class OrderImpl implements OrderDelHou {
     @Override
     public Book bookA(String bookid){
         Map map=new HashMap();
-        Book b=new Book();
         map.put("bookid",bookid);
         List<Book> listbook=bookMapper.searchBookByParams(map);
-        for (Book l:listbook) {
-            b.setBookid(l.getBookid());
-            b.setBookauthor(l.getBookauthor());
-            b.setBookdelete(l.getBookdelete());
-            b.setBookname(l.getBookname());
-            b.setBookprice(l.getBookprice());
-            b.setBookstore(l.getBookstore());
-            b.setBooktime(l.getBooktime());
-            b.setBooktypeid(l.getBooktypeid());
-            b.setBookurl(l.getBookurl());
-        }
-        return b;
+        return listbook.get(0);
     }
 
 
