@@ -25,7 +25,6 @@ public class LoginService implements Login{
         m.put("userpwd",userpwd);
         List<User> list=userMapper.searchUserByParams(m);
         if(list!=null&&list.size()>0){
-            System.out.println("3333333333333");
             return list.get(0);
         }else{
             return null;
