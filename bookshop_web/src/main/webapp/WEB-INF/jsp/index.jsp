@@ -22,8 +22,8 @@
     <div class="userMenu">
       <ul>
         <li class="current"><a href="#">用户：${user.username}</a></li>
-        <li><a href="#">我的订单</a></li>
-        <li><a href="#">购物车</a></li>
+        <li><a href="orderlist.html">我的订单</a></li>
+        <li><a href="shopping.html">购物车</a></li>
         <li><a href="logout">注销</a></li>
       </ul>
     </div>
@@ -48,7 +48,7 @@
         </tr>
         <%-- EL表达式的地方--%>
 <c:forEach items="${list.content}" var="slist">
- <tr>
+        <tr>
           <td><input type="checkbox" name="bookid" value="${slist.bookid}" /></td>
           <td class="title">${slist.bookname}</td>
           <td>${slist.bookprice}</td>

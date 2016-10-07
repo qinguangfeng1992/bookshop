@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,10 +13,10 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li><a href="index.html">User首页</a></li>
+				<li><a href="index.html">用户：${user.username}</a></li>
 				<li class="current"><a href="orderlist.html">我的订单</a></li>
 				<li><a href="shopping.html">购物车</a></li>
-				<li><a href="#">注销</a></li>
+				<li><a href="logout">注销</a></li>
 			</ul>
 		</div>
 		<form method="get" name="search" action="">
@@ -34,22 +35,16 @@
 					<th class="createTime">下单时间</th>
 					<th class="status">订单状态</th>
 				</tr>
+			<c:forEach items="${list.content}" var="order">
 				<tr>
-					<td>10010</td>
+					<td>${order.orderid}</td>
 					<td class="thumb"><img src="images/book/book_01.gif" /></td>
-					<td>王五</td>
-					<td>￥18.00</td>
-					<td>2012-12-21 12:00:00</td>
-					<td>已完成</td>
+					<td>${order.username}</td>
+					<td>${order.orderprice}</td>
+					<td>${order.ordertime}</td>
+					<td>${order.orderstatu}</td>
 				</tr>
-				<tr>
-					<td>10010</td>
-					<td class="thumb"><img src="images/book/book_02.gif" /></td>
-					<td>马六</td>
-					<td>￥18.00</td>
-					<td>2012-12-21 12:00:00</td>
-					<td>已完成</td>
-				</tr>
+			</c:forEach>
 			</table>
 			<div class="page-spliter">
 				<a href="#">&lt;</a>

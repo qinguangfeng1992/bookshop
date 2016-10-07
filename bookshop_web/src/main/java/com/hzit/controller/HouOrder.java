@@ -62,7 +62,6 @@ public class HouOrder {
     }
     @RequestMapping("/totoorderlist")
     public String toorderlist(){
-
         return "shopping";
     }
 }
