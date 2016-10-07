@@ -57,7 +57,7 @@
           <td>${slist.bookauthor}</td>
           <td>${slist.booktime}</td>
           <td>${slist.typename}</td>
-          <td class="thumb"><img src="images/book/book_01.gif" /></td>
+          <td class="thumb" ><img width="150px" src="${slist.bookurl}" /></td>
         </tr>
 
 </c:forEach>
