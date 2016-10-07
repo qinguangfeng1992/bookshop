@@ -33,6 +33,6 @@ public class TestHou {
     }
     @Test
     public void update(){
-        System.out.println(orderDelHou.updateorder("23"));
+        System.out.println();
     }
 }

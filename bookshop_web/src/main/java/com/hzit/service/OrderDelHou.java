@@ -28,7 +28,7 @@ public interface OrderDelHou {
      * 创建一张订单在修改一张订单 数量
      * @return
      */
-    public Integer updateorder(String Num);
+    public Integer updateorder(String Num,String userid);
 
     /**
      * 查询当前用户的所有订单
