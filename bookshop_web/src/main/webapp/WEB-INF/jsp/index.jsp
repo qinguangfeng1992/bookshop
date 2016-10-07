@@ -69,7 +69,7 @@
 <%-- 分页--%>
       <div class="page-spliter">
 
-        <a href="bookindex?page=${currpage-1}">&lt;</a>
+        <a href="bookindex?page=${currpage-1}">&lt;&lt;</a>
         <a href="bookindex">首页</a>
 
         <c:forEach var="p" begin="0" end="${list.totalPages-1}">
@@ -77,7 +77,7 @@
         </c:forEach>
         <span>...</span>
         <a href="bookindex?page=${list.totalPages-1}">尾页</a>
-        <a href="bookindex?page=${currpage+1}">&gt;</a>
+        <a href="bookindex?page=${currpage+1}">&gt;&gt;</a>
 
       </div>
       <div class="button"><input class="input-btn" type="submit" name="submit" value="" /></div>
