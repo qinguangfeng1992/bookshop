@@ -34,7 +34,7 @@
 </div>
 <div id="content" class="wrap">
   <div class="list bookList">
-    <form method="post" name="shoping" action="shopping.html">
+    <form method="post" name="shoping" action="orderlist">
       <table>
 
         <tr class="title">
