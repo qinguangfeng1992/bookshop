@@ -22,7 +22,7 @@
     <div class="userMenu">
       <ul>
         <li class="current"><a href="#">用户：${user.username}</a></li>
-        <li><a href="orderlist.html">我的订单</a></li>
+        <li><a href="toorderlist">我的订单</a></li>
         <li><a href="shopping.html">购物车</a></li>
         <li><a href="logout">注销</a></li>
       </ul>
@@ -36,7 +36,6 @@
   <div class="list bookList">
     <form method="post" name="shoping" action="shopping.html">
       <table>
-
         <tr class="title">
           <th class="checker"></th>
           <th>书名</th>
@@ -59,26 +58,19 @@
           <td>${slist.typename}</td>
           <td class="thumb" ><img width="150px" src="${slist.bookurl}" /></td>
         </tr>
-
 </c:forEach>
-
       </table>
-
-
 
 <%-- 分页--%>
       <div class="page-spliter">
-
         <a href="bookindex?page=${currpage-1}">&lt;&lt;</a>
         <a href="bookindex">首页</a>
-
         <c:forEach var="p" begin="0" end="${list.totalPages-1}">
         <a href="bookindex?page=${p}">${p+1}</a>
         </c:forEach>
         <span>...</span>
         <a href="bookindex?page=${list.totalPages-1}">尾页</a>
         <a href="bookindex?page=${currpage+1}">&gt;&gt;</a>
-
       </div>
       <div class="button"><input class="input-btn" type="submit" name="submit" value="" /></div>
     </form>

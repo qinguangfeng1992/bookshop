@@ -35,7 +35,7 @@
 					<th class="createTime">下单时间</th>
 					<th class="status">订单状态</th>
 				</tr>
-			<c:forEach items="${list.content}" var="order">
+			<c:forEach items="${orderlist}" var="order">
 				<tr>
 					<td>${order.orderid}</td>
 					<td class="thumb"><img src="images/book/book_01.gif" /></td>

@@ -18,7 +18,7 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping("/toindex")
-     public String userLogin(@RequestParam("username")String username,@RequestParam("userpwd") String userpwd,HttpSession session){
+    public String userLogin(@RequestParam("username")String username,@RequestParam("userpwd") String userpwd,HttpSession session){
         User user=loginService.findUser(username,userpwd);
         if(user!=null){
             session.setAttribute("user",user);
