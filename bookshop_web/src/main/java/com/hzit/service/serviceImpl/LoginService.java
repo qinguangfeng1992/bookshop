@@ -1,8 +1,8 @@
-package com.hzit.serviceAll.serviceImpl;
+package com.hzit.service.serviceImpl;
 
 import com.hzit.dao.entity.User;
 import com.hzit.dao.mapper.UserMapper;
-import com.hzit.serviceAll.Login;
+import com.hzit.service.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

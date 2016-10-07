@@ -1,4 +1,4 @@
-package com.hzit.serviceAll;
+package com.hzit.service;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
