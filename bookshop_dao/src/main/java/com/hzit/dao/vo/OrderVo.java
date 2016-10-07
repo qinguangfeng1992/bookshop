@@ -2,7 +2,7 @@ package com.hzit.dao.vo;
 
 /**
  * 
- * @author qinguangfeng
+ * @author HOU
  */
 public class OrderVo {
 	/**
@@ -29,6 +29,10 @@ public class OrderVo {
 	 *  订单假删
 	 */
 	private String orderdelete;
+	/**
+	 *  用户id
+	 */
+	private String userid;
 	/**
 	 * 订单ID
 	 * @param orderid
@@ -118,5 +122,20 @@ public class OrderVo {
      */	
     public String getOrderdelete(){
     	return orderdelete;
+    }
+	/**
+	 * 用户id
+	 * @param userid
+	 */
+	public void setUserid(String userid){
+		this.userid = userid;
+	}
+	
+    /**
+     * 用户id
+     * @return String
+     */	
+    public String getUserid(){
+    	return userid;
     }
 }

@@ -9,7 +9,8 @@
         ordertime,
         orderprice,
         orderstatu,
-        orderdelete
+        orderdelete,
+        userid
     </sql>
 
     <sql id="orderBaseWhereSql">
@@ -33,12 +34,15 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderdelete)">
                     AND orderdelete = #{map.orderdelete}
                 </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                    AND userid = #{map.userid}
+                </if>
             </where>
         </if>
     </sql>
 
     <insert id="insertOrder" parameterType="com.hzit.dao.entity.Order">
-        INSERT INTO order(
+        INSERT INTO `order`(
         <include refid="orderBaseColumnSql"/>
         )VALUES(
             #{orderid},
@@ -46,17 +50,18 @@
             #{ordertime},
             #{orderprice},
             #{orderstatu},
-            #{orderdelete}
+            #{orderdelete},
+            #{userid}
         )
     </insert>
 
     
     <delete id="deleteOrderByOrderid" parameterType="String">
-        DELETE FROM order WHERE orderid = #{orderid}
+        DELETE FROM `order` WHERE orderid = #{orderid}
     </delete>
 
     <update id="updateOrder" parameterType="com.hzit.dao.entity.Order">
-        UPDATE order
+        UPDATE `order`
         <set>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookid)">
                 bookid = #{bookid} ,
@@ -73,6 +78,9 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderdelete)">
                 orderdelete = #{orderdelete} ,
             </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userid)">
+                userid = #{userid} ,
+            </if>
         </set>
         WHERE orderid = #{orderid}
     </update>
@@ -80,7 +88,7 @@
     <select id="searchOrderByParams" parameterType="map" resultMap="orderMap">
         SELECT
         <include refid="orderBaseColumnSql"/>
-        FROM order
+        FROM `order`
         <include refid="orderBaseWhereSql"/>
     </select>
 
@@ -91,6 +99,7 @@
         <result column="orderprice" property="orderprice"/>
         <result column="orderstatu" property="orderstatu"/>
         <result column="orderdelete" property="orderdelete"/>
+        <result column="userid" property="userid"/>
     </resultMap>
 
 </mapper>

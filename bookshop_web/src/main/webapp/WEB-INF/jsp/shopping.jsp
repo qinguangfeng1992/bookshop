@@ -1,9 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
-<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>
 <div id="header" class="wrap">
@@ -13,7 +15,7 @@
 			<ul>
 				<li><a href="index.html">User首页</a></li>
 				<li><a href="orderlist.html">我的订单</a></li>
-				<li class="current"><a href="shopping.html">购物车</a></li>
+				<li class="current"><a href="../hou/orderlist">购物车</a></li>
 				<li><a href="#">注销</a></li>
 			</ul>
 		</div>
@@ -32,24 +34,14 @@
 					<th class="nums">数量</th>
 					<th class="price">价格</th>
 				</tr>
+				<c:forEach items="${book}" var="ord">
 				<tr>
-					<td class="thumb"><img src="images/book/book_01.gif" /></td>
-					<td class="title">泰戈尔诗集</td>
+					<td class="thumb"><img src="${ord.bookurl}" /></td>
+					<td class="title">${ord.bookname}</td>
 					<td><input class="input-text" type="text" name="nums" value="1"/></td>
-					<td>￥<span>18.00</span></td>
+					<td>￥<span>${ord.bookprice}</span></td>
 				</tr>
-				<tr class="odd">
-					<td class="thumb"><img src="images/book/book_02.gif" /></td>
-					<td class="title">痕记</td>
-					<td><input class="input-text" type="text" name="nums" value="1" /></td>
-					<td>￥<span>22.80</span></td>
-				</tr>
-				<tr>
-					<td class="thumb"><img src="images/book/book_03.gif" /></td>
-					<td class="title">天堂之旅</td>
-					<td><input class="input-text" type="text" name="nums" value="1" /></td>
-					<td>￥<span>25.00</span></td>
-				</tr>
+				</c:forEach>
 			</table>
 			<div class="button">
 				<h4>总价：￥<span>65.00</span>元</h4>
