@@ -33,13 +33,13 @@ public class LoginController {
         return "redirect:/login.html";
     }
 
-    @RequestMapping("/regi")
+    @RequestMapping("/zhuce")
     public String register(User user){
         boolean in=loginService.insert(user);
         if(in){
-            return "index";
+            return "redirect:/bookindex";
         }else{
-            return "login";
+            return "redirect:/login.html";
         }
     }
 

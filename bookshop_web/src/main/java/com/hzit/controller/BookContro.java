@@ -31,13 +31,10 @@ public class BookContro {
     @RequestMapping("/bookindex")
     public String getBookIndex(@RequestParam(name = "page", defaultValue = "0") Integer page, ModelMap modelMap) {
         if (page < 0) page = 0;
-
-
         Page<Book> list = bookImpl.findPage(page,3);
         modelMap.put("list",list);
         modelMap.put("currpage", page);
         return "index";
-
     }
 
 }
