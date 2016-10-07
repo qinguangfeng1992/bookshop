@@ -101,15 +101,19 @@
         WHERE bookid = #{bookid}
     </update>
 
-    <select id="searchBookByParams" parameterType="map" resultMap="bookMapVo">
-      <!--  SELECT
-        <include refid="bookBaseColumnSql"/>
-        FROM book
-        <include refid="bookBaseWhereSql"/>-->
+    <select id="findBookByParams" parameterType="map" resultMap="bookMapVo">
+
         SELECT bookid,bookname,typename,bookurl,bookprice,bookstore,bookauthor,booktime FROM book JOIN type ON book.booktypeid=type.booktypeid
 <include refid="bookBaseWhereSql">
 
 </include>
+    </select>
+
+    <select id="searchBookByParams" parameterType="map" resultMap="bookMap">
+        SELECT
+        <include refid="bookBaseColumnSql"/>
+        FROM book
+        <include refid="bookBaseWhereSql"/>
     </select>
 
     <resultMap type="com.hzit.dao.entity.Book" id="bookMap">

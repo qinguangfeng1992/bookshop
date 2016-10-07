@@ -21,14 +21,14 @@ public class BookImpl implements BookQin {
 
     @Override
     public List<BookVo> findBookAll() {
-        return bookMapper.searchBookByParams(null);
+        return bookMapper.findBookByParams(null);
     }
     @Override
     public Page<BookVo> findPage(int page, int rowcount) {
 
         PageRequest pg = new PageRequest(page, rowcount);
 
-        Page<BookVo> data = bookMapper.searchBookByParams(null, pg);
+        Page<BookVo> data = bookMapper.findBookByParams(null, pg);
 
         return data;
 

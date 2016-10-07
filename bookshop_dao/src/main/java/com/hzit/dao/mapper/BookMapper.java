@@ -17,9 +17,11 @@ public interface BookMapper {
 
 	int updateBook(Book book);
 
-	Page<BookVo> searchBookByParams(@Param("map") Map<String, String> map, Pageable pageable);
+	Page<Book> searchBookByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<BookVo> searchBookByParams(@Param("map") Map<String, String> map);
+	List<Book> searchBookByParams(@Param("map") Map<String, String> map);
 
+	Page<BookVo> findBookByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
+	List<BookVo> findBookByParams(@Param("map") Map<String, String> map);
 } 
