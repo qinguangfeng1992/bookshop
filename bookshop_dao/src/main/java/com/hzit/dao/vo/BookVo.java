@@ -41,6 +41,20 @@ public class BookVo {
 	 *  图书类别ID
 	 */
 	private String booktypeid;
+
+	/**
+	 *  图书表的图书类型的名字
+	 */
+	private String typename;
+
+	public String getTypename() {
+		return typename;
+	}
+
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
+
 	/**
 	 * ID
 	 * @param bookid

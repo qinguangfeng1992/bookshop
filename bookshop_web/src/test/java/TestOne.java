@@ -1,6 +1,7 @@
 
 import com.hzit.Starter;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.vo.BookVo;
 import com.hzit.serviceAll.serviceImpl.BookImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,8 +21,8 @@ public class TestOne {
 private BookImpl bookImpl;
     @Test
     public void testFindBookAll() {
-       List<Book> list= bookImpl.findBookAll();
-        for (Book b:list){
+       List<BookVo> list= bookImpl.findBookAll();
+        for (BookVo b:list){
             System.out.println(b.getBookname());
         }
     }

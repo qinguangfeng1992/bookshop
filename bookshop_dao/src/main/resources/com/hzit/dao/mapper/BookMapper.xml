@@ -18,32 +18,32 @@
     <sql id="bookBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookid)">
-                    bookid = #{map.bookid}
+                <if test="map.bookid!=null">
+                    book.bookid = #{map.bookid}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookname)">
-                    AND bookname = #{map.bookname}
+                <if test="map.bookname!=null">
+                    AND book.bookname = #{map.bookname}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookurl)">
-                    AND bookurl = #{map.bookurl}
+                <if test="map.bookurl!=null">
+                    AND book.bookurl = #{map.bookurl}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookprice)">
-                    AND bookprice = #{map.bookprice}
+                <if test="map.bookprice!=null">
+                    AND book.bookprice = #{map.bookprice}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookstore)">
-                    AND bookstore = #{map.bookstore}
+                <if test="map.bookstore!=null">
+                    AND book.bookstore = #{map.bookstore}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookdelete)">
-                    AND bookdelete = #{map.bookdelete}
+                <if test="map.bookdelete!=null">
+                    AND book.bookdelete = #{map.bookdelete}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookauthor)">
-                    AND bookauthor = #{map.bookauthor}
+                <if test="map.bookauthor!=null">
+                    AND book.bookauthor = #{map.bookauthor}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.booktime)">
-                    AND booktime = #{map.booktime}
+                <if test="map.booktime!=null">
+                    AND book.booktime = #{map.booktime}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.booktypeid)">
-                    AND booktypeid = #{map.booktypeid}
+                <if test="map.booktypeid!=null">
+                    AND book.booktypeid = #{map.booktypeid}
                 </if>
             </where>
         </if>
@@ -101,11 +101,15 @@
         WHERE bookid = #{bookid}
     </update>
 
-    <select id="searchBookByParams" parameterType="map" resultMap="bookMap">
-        SELECT
+    <select id="searchBookByParams" parameterType="map" resultMap="bookMapVo">
+      <!--  SELECT
         <include refid="bookBaseColumnSql"/>
         FROM book
-        <include refid="bookBaseWhereSql"/>
+        <include refid="bookBaseWhereSql"/>-->
+        SELECT bookid,bookname,typename,bookurl,bookprice,bookstore,bookauthor,booktime FROM book JOIN type ON book.booktypeid=type.booktypeid
+<include refid="bookBaseWhereSql">
+
+</include>
     </select>
 
     <resultMap type="com.hzit.dao.entity.Book" id="bookMap">
@@ -118,6 +122,19 @@
         <result column="bookauthor" property="bookauthor"/>
         <result column="booktime" property="booktime"/>
         <result column="booktypeid" property="booktypeid"/>
+    </resultMap>
+
+    <resultMap type="com.hzit.dao.vo.BookVo" id="bookMapVo">
+        <id column="bookid" property="bookid"/>
+        <result column="bookname" property="bookname"/>
+        <result column="bookurl" property="bookurl"/>
+        <result column="bookprice" property="bookprice"/>
+        <result column="bookstore" property="bookstore"/>
+        <result column="bookdelete" property="bookdelete"/>
+        <result column="bookauthor" property="bookauthor"/>
+        <result column="booktime" property="booktime"/>
+        <result column="booktypeid" property="booktypeid"/>
+        <result column="typename" property="typename"/>
     </resultMap>
 
 </mapper>

@@ -2,6 +2,7 @@ package com.hzit.serviceAll;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.vo.BookVo;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by Administrator on 2016/10/6.
  */
 public interface BookQin {
-    public List<Book> findBookAll();
+    public List<BookVo> findBookAll();
 
-    public Page<Book> findPage(int page, int rowcount);
+    public Page<BookVo> findPage(int page, int rowcount);
 }

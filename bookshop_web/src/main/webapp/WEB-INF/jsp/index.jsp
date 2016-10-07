@@ -21,9 +21,9 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li class="current"><a href="index.html">User首页</a></li>
-        <li><a href="orderlist.html">我的订单</a></li>
-        <li><a href="shopping.html">购物车</a></li>
+        <li class="current"><a href="#">${user.username}的首页</a></li>
+        <li><a href="#">我的订单</a></li>
+        <li><a href="#">购物车</a></li>
         <li><a href="#">注销</a></li>
       </ul>
     </div>
@@ -56,7 +56,7 @@
           <td>${slist.bookstore}</td>
           <td>${slist.bookauthor}</td>
           <td>${slist.booktime}</td>
-          <td>${slist.booktypeid}</td>
+          <td>${slist.typename}</td>
           <td class="thumb"><img src="images/book/book_01.gif" /></td>
         </tr>
 
