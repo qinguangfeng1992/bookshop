@@ -1,6 +1,6 @@
 import com.hzit.Starter;
 import com.hzit.dao.entity.Orderdetail;
-import com.hzit.serviceAll.OrderDelHou;
+import com.hzit.service.OrderDelHou;
 
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Test;

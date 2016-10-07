@@ -1,7 +1,7 @@
-package com.hzit.controllerAll;
+package com.hzit.controller;
 
 import com.hzit.dao.entity.User;
-import com.hzit.serviceAll.serviceImpl.LoginService;
+import com.hzit.service.serviceImpl.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +33,13 @@ public class LoginController {
         return "redirect:/login.html";
     }
 
-    @RequestMapping("/regi")
+    @RequestMapping("/zhuce")
     public String register(User user){
         boolean in=loginService.insert(user);
         if(in){
-            return "index";
+            return "redirect:/register_success.html";
         }else{
-            return "login";
+            return "redirect:/login.html";
         }
     }
 
