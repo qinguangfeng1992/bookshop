@@ -5,6 +5,7 @@ import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.mapper.BookMapper;
 import com.hzit.dao.mapper.OrderMapper;
 import com.hzit.dao.mapper.OrderdetailMapper;
+import com.hzit.dao.vo.BookVo;
 import com.hzit.service.OrderDelHou;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +57,7 @@ public class OrderImpl implements OrderDelHou {
     public Integer updateorder(String Num,String bookid) {
         Orderdetail orderdetail=new Orderdetail();
         orderdetail.setNum(Num);
-        orderdetail.setBookid(bookid);
+        orderdetail.setOrderdatailid(bookid);
         orderdetailMapper.updateOrderdetail(orderdetail);
         return 1;
     }
