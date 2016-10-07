@@ -1,8 +1,8 @@
-package com.hzit.controllerAll;
+package com.hzit.controller;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
-import com.hzit.serviceAll.BookQin;
+import com.hzit.service.BookQin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

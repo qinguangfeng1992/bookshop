@@ -1,8 +1,8 @@
-package com.hzit.serviceAll.serviceImpl;
+package com.hzit.service.serviceImpl;
 
 import com.hzit.dao.entity.User;
 import com.hzit.dao.mapper.UserMapper;
-import com.hzit.serviceAll.Login;
+import com.hzit.service.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,6 @@ public class LoginService implements Login{
         m.put("userpwd",userpwd);
         List<User> list=userMapper.searchUserByParams(m);
         if(list!=null&&list.size()>0){
-            System.out.println("3333333333333");
             return list.get(0);
         }else{
             return null;

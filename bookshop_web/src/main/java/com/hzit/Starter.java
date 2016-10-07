@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @MapperScan("com.hzit.dao.mapper")
-@ComponentScan({"com.hzit.serviceAll","com.fc","com.hzit.controllerAll"})
+@ComponentScan({"com.hzit.service","com.fc", "com.hzit.controller"})
 public class Starter extends SpringBootServletInitializer{
     public Starter(){
         System.out.println("启动SpringApplication");
