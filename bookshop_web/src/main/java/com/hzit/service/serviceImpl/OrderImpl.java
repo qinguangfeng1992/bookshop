@@ -1,6 +1,9 @@
 package com.hzit.service.serviceImpl;
 
+import com.fc.platform.commons.page.Page;
+import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.mapper.BookMapper;
 import com.hzit.dao.mapper.OrderMapper;
@@ -26,6 +29,7 @@ public class OrderImpl implements OrderDelHou {
     BookMapper bookMapper;
     @Autowired
     OrderdetailMapper orderdetailMapper;
+
     @Override
     public Integer deleteOrder(String id) {
        try {
@@ -76,5 +80,20 @@ public class OrderImpl implements OrderDelHou {
         return listbook.get(0);
     }
 
+    /**
+     * 分页的方法
+     * @param page
+     * @param rowcount
+     * @return
+     */
+  /*  @Override
+    public Page<Order> findPage(int page, int rowcount) {
 
+        PageRequest pg = new PageRequest(page, rowcount);
+
+        Page<Order> data = orderMapper.searchOrderByParams(null, pg);
+
+        return data;
+
+    }*/
 }

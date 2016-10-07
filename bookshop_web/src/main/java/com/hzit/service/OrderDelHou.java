@@ -1,6 +1,8 @@
 package com.hzit.service;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.vo.BookVo;
 import org.springframework.stereotype.Service;
@@ -43,4 +45,9 @@ public interface OrderDelHou {
      * @return
      */
     public Book bookA(String bookid);
+
+    /**
+     * 分页的方法
+     */
+  /*  public Page<Order> findPage(int page, int rowcount);*/
 }

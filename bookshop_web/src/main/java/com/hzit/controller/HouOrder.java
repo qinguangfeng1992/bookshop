@@ -1,11 +1,14 @@
 package com.hzit.controller;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.BookVoHou;
 import com.hzit.service.BookQin;
 import com.hzit.service.OrderDelHou;
+import com.hzit.service.serviceImpl.OrderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,6 +30,8 @@ public class HouOrder {
 
     @Autowired
     OrderDelHou orderAll;
+    @Autowired
+    OrderDelHou orderImpl;
     @RequestMapping("/orderlist")
     public String all(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session) {
         String userid = "1";//(String) request.getSession().getAttribute("userid");
@@ -111,5 +116,17 @@ public class HouOrder {
         return "redirect:/hou/totoorderlist";
     }
 
+/**
+ * 为分页服务的方法
+ */
 
+/*@RequestMapping("/oderspliter")
+public String getBookIndex(@RequestParam(name = "page", defaultValue = "0") Integer page, ModelMap modelMap) {
+    if (page < 0) page = 0;
+    Page<Order> list = orderImpl.findPage(page, 3);
+    modelMap.put("list",list);
+    modelMap.put("currpage", page);
+    return "orderlist";
+
+}*/
 }

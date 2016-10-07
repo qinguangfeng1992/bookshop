@@ -46,17 +46,17 @@
 				</tr>
 			</c:forEach>
 			</table>
-			<div class="page-spliter">
-				<a href="#">&lt;&lt;</a>
-				<a href="#">首页</a>
-				<span class="current">1</span>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<span>...</span>
-				<a href="#">尾页</a>
-				<a href="#">&gt;&gt;</a>
-			</div>
+		<%--&lt;%&ndash; 分页&ndash;%&gt;
+		<div class="page-spliter">
+			<a href="oderspliter?page=${currpage-1}">&lt;&lt;</a>
+			<a href="oderspliter">首页</a>
+			<c:forEach var="p" begin="0" end="${list.totalPages-1}">
+				<a href="oderspliter?page=${p}">${p+1}</a>
+			</c:forEach>
+			<span>...</span>
+			<a href="oderspliter?page=${list.totalPages-1}">尾页</a>
+			<a href="oderspliter?page=${currpage+1}">&gt;&gt;</a>
+		</div>--%>
 			<div class="button"><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /></div>
 	</div>
 </div>
