@@ -37,7 +37,7 @@ public class LoginController {
     public String register(User user){
         boolean in=loginService.insert(user);
         if(in){
-            return "redirect:/bookindex";
+            return "redirect:/register_success.html";
         }else{
             return "redirect:/login.html";
         }
