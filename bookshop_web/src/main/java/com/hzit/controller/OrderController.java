@@ -26,7 +26,7 @@ public class OrderController {
         modelMap.put("olist",list);
         return "orderlist";
     }
-    @RequestMapping("/toorderlist")
+    @RequestMapping("/orderlist")
     @ResponseBody
     public String orderList(ModelMap modelMap){
         List<Order> list=orderService.findOrderAll();
