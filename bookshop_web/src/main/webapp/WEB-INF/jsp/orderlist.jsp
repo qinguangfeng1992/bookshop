@@ -15,7 +15,7 @@
 			<ul>
 				<li><a href="index.html">用户：${user.username}</a></li>
 				<li class="current"><a href="orderlist.html">我的订单</a></li>
-				<li><a href="shopping.html">购物车</a></li>
+				<li><a href="hou/totoorderlist">购物车</a></li>
 				<li><a href="logout">注销</a></li>
 			</ul>
 		</div>
@@ -35,11 +35,11 @@
 					<th class="createTime">下单时间</th>
 					<th class="status">订单状态</th>
 				</tr>
-			<c:forEach items="${orderlist}" var="order">
+			<c:forEach items="${olist}" var="order">
 				<tr>
 					<td>${order.orderid}</td>
-					<td class="thumb"><img src="images/book/book_01.gif" /></td>
-					<td>${order.username}</td>
+					<td class="thumb">${order.bookid}</td>
+					<td>${sessionScope.user.username}</td>
 					<td>${order.orderprice}</td>
 					<td>${order.ordertime}</td>
 					<td>${order.orderstatu}</td>
