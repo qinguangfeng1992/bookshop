@@ -35,7 +35,8 @@ public class TestHou {
     }
     @Test
     public void update(){
-        Book book=orderDelHou.bookA("1");
-        System.out.println(book);
+
+
+
     }
 }

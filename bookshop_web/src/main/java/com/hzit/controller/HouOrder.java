@@ -1,11 +1,14 @@
 package com.hzit.controller;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.BookVoHou;
 import com.hzit.service.BookQin;
 import com.hzit.service.OrderDelHou;
+import com.hzit.service.serviceImpl.OrderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -27,6 +28,8 @@ public class HouOrder {
 
     @Autowired
     OrderDelHou orderAll;
+    @Autowired
+    OrderDelHou orderImpl;
     @RequestMapping("/orderlist")
     public String all(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session) {
         String userid = "1";//(String) request.getSession().getAttribute("userid");
@@ -61,39 +64,37 @@ public class HouOrder {
         session.setAttribute("book",book);
         return "redirect:/hou/totoorderlist";
     }
+
     @RequestMapping("/totoorderlist")
-    public String toorderlist(){
+    public String toorderlist(ModelMap modelMap){
         return "shopping";
     }
+
     @RequestMapping("/shoppingcart")
     public String gouwu(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session){
         String userid = "1";
         List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
-        bookid=new String[]{"1","5"};
+        bookid=new String[]{"1","5","2"};
         //添加数据
-        for (int i = 0; i <orderdetail.size() ; i++) {
-            for (int j = 0; j <bookid.length ; j++) {
-                if (orderdetail.get(i).getBookid().equals(bookid[j])){
-                    Integer num=Integer.parseInt(orderdetail.get(i).getNum());
-                    num+=1;
-                    orderAll.updateorder(num.toString(),orderdetail.get(i).getOrderdatailid());
+        for (int j = 0; j <orderdetail.size() ; j++) {
+            for (int i = 0; i <bookid.length ; i++) {
+                Boolean aBoolean=orderAll.userbookcart(bookid[i],userid);
+                if(aBoolean){
+                    Integer conut= Integer.valueOf(orderdetail.get(j).getNum());
+                    conut=conut+1;
+                    orderAll.updateorder(conut.toString(),orderdetail.get(j).getOrderdatailid());
                 }else{
-                    orderAll.Allorder(bookid[j],userid);
+                    orderAll.Allorder(bookid[i],userid);
                 }
             }
         }
-
         //获取当前用户的订单
-        List<BookVoHou> listbook=(List<BookVoHou>)session.getAttribute("bookvohou");
-        if (listbook==null) {
-            listbook = new ArrayList<BookVoHou>();
-        }
+        List<BookVoHou> listbook = new ArrayList<BookVoHou>();
         List<Orderdetail> orderdetai=orderAll.Aorder(userid);//查询用户订单
-        BookVoHou bookvo=new BookVoHou();
         for (int i = 0; i <orderdetai.size() ; i++) {
+            BookVoHou bookvo=new BookVoHou();
             Orderdetail order=orderdetai.get(i);
             Book book=orderAll.bookA(order.getBookid());
-
             bookvo.setBookstore(book.getBookstore());//库存
             bookvo.setBooktime(book.getBooktime());//时间
             bookvo.setBookname(book.getBookname());//名字
@@ -104,12 +105,26 @@ public class HouOrder {
             bookvo.setBooktypeid(book.getBooktypeid());
             bookvo.setBookurl(book.getBookurl());
             bookvo.setCount(order.getNum());
-            listbook.add(bookvo);
-
+            listbook.add(i,bookvo);
         }
         session.setAttribute("bookvohou",listbook);
+        for(BookVoHou bookVoHou:listbook){
+            System.out.println(bookVoHou.getBookname());
+        }
         return "redirect:/hou/totoorderlist";
     }
 
+/**
+ * 为分页服务的方法
+ */
 
+/*@RequestMapping("/oderspliter")
+public String getBookIndex(@RequestParam(name = "page", defaultValue = "0") Integer page, ModelMap modelMap) {
+    if (page < 0) page = 0;
+    Page<Order> list = orderImpl.findPage(page, 3);
+    modelMap.put("list",list);
+    modelMap.put("currpage", page);
+    return "orderlist";
+
+}*/
 }
