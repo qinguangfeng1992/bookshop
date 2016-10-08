@@ -72,19 +72,26 @@ public class HouOrder {
 
     @RequestMapping("/shoppingcart")
     public String gouwu(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session){
-        String userid = "1";
+        String userid ="1";//(String) session.getAttribute("");
         List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
-        bookid=new String[]{"1","5","2"};
-        //添加数据
-        for (int j = 0; j <orderdetail.size() ; j++) {
+        //bookid=new String[]{"1","5","2"};
+        if(orderdetail.size()==0){
             for (int i = 0; i <bookid.length ; i++) {
-                Boolean aBoolean=orderAll.userbookcart(bookid[i],userid);
-                if(aBoolean){
-                    Integer conut= Integer.valueOf(orderdetail.get(j).getNum());
-                    conut=conut+1;
-                    orderAll.updateorder(conut.toString(),orderdetail.get(j).getOrderdatailid());
-                }else{
-                    orderAll.Allorder(bookid[i],userid);
+                orderAll.Allorder(bookid[i], userid);
+            }
+        }else {
+            //添加数据
+            for (int j = 0; j < orderdetail.size(); j++) {
+               for (int i = j; i < bookid.length; i++) {
+                    Boolean aBoolean = orderAll.userbookcart(bookid[i], userid);
+                    if (aBoolean) {
+                        Integer conut = Integer.valueOf(orderdetail.get(j).getNum());
+                        conut = conut + 1;
+                        orderAll.updateorder(conut.toString(), orderdetail.get(j).getOrderdatailid());
+                        break;
+                    } else {
+                        orderAll.Allorder(bookid[i], userid);
+                    }
                 }
             }
         }

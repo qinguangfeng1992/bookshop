@@ -23,7 +23,7 @@
       <ul>
         <li class="current"><a href="#">用户：${user.username}</a></li>
         <li><a href="toorderlist">我的订单</a></li>
-        <li><a href="#">购物车</a></li>
+        <li><a href="hou/shoppingcart">购物车</a></li>
         <li><a href="logout">注销</a></li>
       </ul>
     </div>
@@ -34,7 +34,7 @@
 </div>
 <div id="content" class="wrap">
   <div class="list bookList">
-    <form method="post" name="shoping" action="orderlist">
+    <form method="post" name="shoping" action="hou/shoppingcart">
       <table>
         <tr class="title">
           <th class="checker"></th>
