@@ -1,8 +1,11 @@
 package com.hzit.service.serviceImpl;
 
+import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.User;
+import com.hzit.dao.mapper.OrderMapper;
 import com.hzit.dao.mapper.UserMapper;
 import com.hzit.service.Login;
+import com.hzit.service.OrderXie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +34,7 @@ public class LoginService implements Login{
         }
     }
 
+
     @Override
     public boolean insert(User user) {
         try{
@@ -42,3 +46,6 @@ public class LoginService implements Login{
 
     }
 }
+
+
+

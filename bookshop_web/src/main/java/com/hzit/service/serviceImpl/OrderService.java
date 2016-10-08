@@ -12,9 +12,10 @@ import java.util.List;
  * Created by Administrator on 2016/10/7.
  */
 @Service
-public class OrderService implements OrderXie{
+public class OrderService implements OrderXie {
     @Autowired
     private OrderMapper orderMapper;
+
     @Override
     public List<Order> findOrderAll() {
         return orderMapper.searchOrderByParams(null);
