@@ -13,9 +13,9 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li><a href="index.html">User首页</a></li>
-				<li><a href="orderlist.html">我的订单</a></li>
-				<li class="current"><a href="../hou/orderlist">购物车</a></li>
+				<li><a href="../bookindex">User首页</a></li>
+				<li><a href="#">我的订单</a></li>
+				<li class="current"><a href="../hou/totoorderlist">购物车</a></li>
 				<li><a href="#">注销</a></li>
 			</ul>
 		</div>
@@ -36,10 +36,10 @@
 				</tr>
 				<c:forEach items="${bookvohou}" var="ord">
 				<tr>
-					<td class="thumb"><img src="${ord.bookurl}" /></td>
+					<td class="thumb"><img width="150px" src="${ord.bookurl}" /></td>
 					<td class="title">${ord.bookname}</td>
 					<td><input class="input-text" type="text" name="nums" value="${ord.count}"/></td>
-					<td>￥<span>${ord.bookprice}</span></td>
+					<td>￥<span name="moylin">${ord.bookprice*ord.count}</span></td>
 				</tr>
 				</c:forEach>
 			</table>
