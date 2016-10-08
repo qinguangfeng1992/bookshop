@@ -18,7 +18,6 @@ public class OrderService implements OrderXie {
 
     @Override
     public List<Order> findOrderAll() {
-        System.out.println("");
         return orderMapper.searchOrderByParams(null);
     }
 }
