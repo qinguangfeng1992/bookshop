@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * Created by Administrator on 2016/10/6.
  */
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
     @Autowired
     private LoginService loginService;
 
