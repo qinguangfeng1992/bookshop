@@ -24,8 +24,10 @@ public class OrderService implements OrderXie {
     @Autowired
     OrderDelHou orderDelHou;
     @Override
-    public List<Order> findOrderAll() {
-        return orderMapper.searchOrderByParams(null);
+    public List<Order> findOrderAll(String userid) {
+        Map map=new HashMap();
+        map.put("userid",userid);
+        return orderMapper.searchOrderByParams(map);
     }
 
     public List<OrderVo> orderOfuserid(String userid) {

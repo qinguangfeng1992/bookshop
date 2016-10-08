@@ -24,7 +24,7 @@ public class OrderController {
     @RequestMapping("/toorderlist")
     public String findOrderList(ModelMap modelMap,HttpSession session){
         User user = (User) session.getAttribute("user");
-        List<Order> list=orderService.findOrderAll();
+        List<Order> list=orderService.findOrderAll(user.getUserid());
         modelMap.put("olist",list);
         return "orderlist";
 
