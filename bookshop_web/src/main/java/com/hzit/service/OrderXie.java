@@ -1,6 +1,7 @@
 package com.hzit.service;
 
 import com.hzit.dao.entity.Order;
+import com.hzit.dao.vo.OrderVVo;
 import com.hzit.dao.vo.OrderVo;
 
 import java.util.List;
@@ -10,4 +11,11 @@ import java.util.List;
  */
 public interface OrderXie {
     public List<Order> findOrderAll(String userid);
+
+    /**
+     * 查询当前用户的 订单
+     * @param userid
+     * @return
+     */
+    public List<OrderVVo> orderOfuserid(String userid);
 }

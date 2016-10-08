@@ -2,6 +2,7 @@ package com.hzit.controller;
 
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.User;
+import com.hzit.dao.vo.OrderVVo;
 import com.hzit.dao.vo.OrderVo;
 import com.hzit.service.OrderDelHou;
 import com.hzit.service.serviceImpl.OrderService;
@@ -24,8 +25,8 @@ public class OrderController {
     @RequestMapping("/toorderlist")
     public String findOrderList(ModelMap modelMap,HttpSession session){
         User user = (User) session.getAttribute("user");
-        List<Order> list=orderService.findOrderAll(user.getUserid());
-        modelMap.put("olist",list);
+        List<OrderVVo> orderVVoList=orderService.orderOfuserid("1");//查询数据
+        modelMap.put("olist",orderVVoList);
         return "orderlist";
 
     }

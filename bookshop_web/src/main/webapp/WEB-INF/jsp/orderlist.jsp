@@ -37,8 +37,12 @@
 				</tr>
 			<c:forEach items="${olist}" var="order">
 				<tr>
-					<td>${order.orderid}</td>
-					<td class="thumb">${order.bookid}</td>
+					<td style="text-align: left">${order.orderid}</td>
+					<td class="thumb">
+						<c:forEach items="${order.bookjihe}" var="bookurl">
+					<img height="100px" src="${bookurl.bookurl}" alt=""/>
+						</c:forEach>
+					</td>
 					<td>${sessionScope.user.username}</td>
 					<td>${order.orderprice}</td>
 					<td>${order.ordertime}</td>

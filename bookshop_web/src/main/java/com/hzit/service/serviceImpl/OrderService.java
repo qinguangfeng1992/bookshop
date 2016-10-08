@@ -3,6 +3,7 @@ package com.hzit.service.serviceImpl;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.mapper.OrderMapper;
+import com.hzit.dao.vo.OrderVVo;
 import com.hzit.dao.vo.OrderVo;
 import com.hzit.service.OrderDelHou;
 import com.hzit.service.OrderXie;
@@ -29,20 +30,31 @@ public class OrderService implements OrderXie {
         map.put("userid",userid);
         return orderMapper.searchOrderByParams(map);
     }
-
-    public List<OrderVo> orderOfuserid(String userid) {
+    @Override
+    public List<OrderVVo> orderOfuserid(String userid) {
         Map map=new HashMap();
         map.put("userid",userid);
         List<Order> orderList=orderMapper.searchOrderByParams(map);
-        OrderVo orderVo=new OrderVo();
-        List<Book> books=new ArrayList<Book>();//创建一个book集合
+        List<OrderVVo> orderVVoList=new ArrayList<OrderVVo>();
         for (Order order:orderList){
-            Book book=orderDelHou.bookA(order.getBookid());
-            books.add(book);
+            OrderVVo orderVVo=new OrderVVo();
+            List<Book> booklist=new ArrayList<Book>();
+            String[] as = order.getBookid().split(",");
+            for (int i = 0; i <as.length ; i++) {
+                Book book=orderDelHou.bookA(as[i]);
+                booklist.add(book);
+            }
+            orderVVo.setBookjihe(booklist);//拿到用户图片组
+            orderVVo.setBookid(order.getBookid());//拿到id
+            orderVVo.setOrderdelete(order.getOrderdelete());
+            orderVVo.setUserid(order.getUserid());
+            orderVVo.setOrderid(order.getOrderid());
+            orderVVo.setOrderprice(order.getOrderprice());
+            orderVVo.setOrderstatu(order.getOrderstatu());
+            orderVVo.setOrdertime(order.getOrdertime());
+            orderVVoList.add(orderVVo);
         }
-        for (Book b:books){
-           orderVo.setPictureurl(b.getBookurl());
-        }
-        return null;
+
+        return orderVVoList;
     }
 }

@@ -4,6 +4,7 @@ import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.service.OrderDelHou;
 
+import com.hzit.service.OrderXie;
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ import java.util.List;
 public class TestHou {
    @Autowired
    OrderDelHou orderDelHou;
+    @Autowired
+    OrderXie orderXie;
     @Test
     public void setOrderDelHou(){
         System.out.println(orderDelHou.Allorder("1","1"));
@@ -35,7 +38,7 @@ public class TestHou {
     }
     @Test
     public void update(){
-
+       orderXie.orderOfuserid("1");
 
 
     }
