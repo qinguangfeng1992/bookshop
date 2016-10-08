@@ -13,7 +13,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
   <link type="text/css" rel="stylesheet" href="css/style.css" />
-
+  <style type="text/css">
+  #ccs {
+	height: 30px;
+	width: 30px;
+	border: 1px solid #000;
+}
+  </style>
 </head>
 <body>
 <div id="header" class="wrap">
@@ -48,16 +54,17 @@
         </tr>
         <%-- EL表达式的地方--%>
 <c:forEach items="${list.content}" var="slist">
-        <tr>
-          <td><input type="checkbox" name="bookid" value="${slist.bookid}" /></td>
-          <td class="title">${slist.bookname}</td>
-          <td>${slist.bookprice}</td>
+        <tr class="trg">
+          <td><input type="checkbox" id="ccs" name="bookid" value="${slist.bookid}" /></td>
+          <td class="title">《${slist.bookname}》</td>
+          <td>￥${slist.bookprice}</td>
           <td>${slist.bookstore}</td>
           <td>${slist.bookauthor}</td>
           <td>${slist.booktime}</td>
           <td>${slist.typename}</td>
           <td class="thumb" ><img width="150px" src="${slist.bookurl}" /></td>
         </tr>
+
 </c:forEach>
       </table>
 
@@ -84,12 +91,23 @@
 </html>
 <script src="../../js/jquery-3.0.0.js" type="text/javascript"></script>
 <script>
+
   $(document).ready(function() {
  /*   $("table").attr("bgColor", "#222222"); //设置表格的背景颜色*/
     $("tr").attr("bgColor", "#FFFFFF"); //为单数行表格设置背景颜色
     $("tr:even").css("background-color", "#F4FAEE"); //为双数行表格设置背颜色素
-  /*  $("table").css("width", "300px"); //为表格添加样式，设置表格长度为300像素*/
-  });
+  /*  $("table") .css("width", "300px"); //为表格添加样式，设置表格长度为300像素*/
 
+  });
+$(function () {
+  var u=$(".trg").click( function () {
+    var i=this.children[0].children[0];
+    if (i.checked==false){
+      i.checked = true;
+    }else{
+      i.checked = false;
+    }
+  })
+})
 </script>
 

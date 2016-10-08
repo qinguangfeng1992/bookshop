@@ -44,7 +44,7 @@
 						</c:forEach>
 					</td>
 					<td>${sessionScope.user.username}</td>
-					<td>${order.orderprice}</td>
+					<td>￥${order.orderprice}</td>
 					<td>${order.ordertime}</td>
 					<td>${order.orderstatu}</td>
 				</tr>

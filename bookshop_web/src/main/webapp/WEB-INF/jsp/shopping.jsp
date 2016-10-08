@@ -32,17 +32,21 @@
 				<tr class="title">
 					<th class="view">图片预览</th>
 					<th>书名</th>
+					<th>单价</th>
 					<th class="nums">数量</th>
 					<th class="price">价格</th>
+					<th class="price">删除</th>
 				</tr>
 				<c:forEach items="${bookvohou}" var="ord">
 				<tr>
 					<td class="thumb"><img width="150px" src="${ord.bookurl}" /></td>
-					<td class="title">${ord.bookname}<input type="hidden" name="bookid" value="${ord.bookid}"></td>
+					<td class="title">《${ord.bookname}》<input type="hidden" name="bookid" value="${ord.bookid}"></td>
+					<td>￥${ord.bookprice}</td>
 					<td>
 						<input class="input-text suan" type="text" name="nums" title="${ord.bookprice}" value="${ord.count}"/>
 					</td>
 					<td>￥<span class="moylin" id="${ord.bookprice}${ord.count}">${ord.bookprice*ord.count}</span></td>
+					<td><a href="#">删除</a></td>
 				</tr>
 				</c:forEach>
 			</table>
