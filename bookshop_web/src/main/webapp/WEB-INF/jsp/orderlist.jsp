@@ -13,8 +13,8 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li><a href="index.html">用户：${user.username}</a></li>
-				<li class="current"><a href="orderlist.html">我的订单</a></li>
+				<li><a href="bookindex">用户：${user.username}</a></li>
+				<li class="current"><a href="toorderlist">我的订单</a></li>
 				<li><a href="hou/totoorderlist">购物车</a></li>
 				<li><a href="logout">注销</a></li>
 			</ul>
