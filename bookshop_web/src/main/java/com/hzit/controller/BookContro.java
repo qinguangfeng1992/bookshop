@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by Administrator on 2016/10/6.
  */
 @Controller
-public class BookContro {
+public class BookContro extends BaseController{
     @Autowired
     private BookQin bookImpl;
 /*    @Autowired
