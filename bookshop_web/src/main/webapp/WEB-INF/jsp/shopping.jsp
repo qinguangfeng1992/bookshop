@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link type="text/css" rel="stylesheet" href="../../css/style.css" />
+	<script language="JavaScript" src="../../js/jquery-3.0.0.js"></script>
 </head>
 <body>
 <div id="header" class="wrap">
@@ -14,7 +15,7 @@
 		<div class="userMenu">
 			<ul>
 				<li><a href="../bookindex">User首页</a></li>
-				<li><a href="#">我的订单</a></li>
+				<li><a href="../toorderlist">我的订单</a></li>
 				<li class="current"><a href="../hou/totoorderlist">购物车</a></li>
 				<li><a href="#">注销</a></li>
 			</ul>
@@ -26,7 +27,7 @@
 </div>
 <div id="content" class="wrap">
 	<div class="list bookList">
-		<form method="post" name="shoping" action="shopping-success.html">
+		<form method="post" name="shoping" action="orderinr">
 			<table>
 				<tr class="title">
 					<th class="view">图片预览</th>
@@ -37,14 +38,17 @@
 				<c:forEach items="${bookvohou}" var="ord">
 				<tr>
 					<td class="thumb"><img width="150px" src="${ord.bookurl}" /></td>
-					<td class="title">${ord.bookname}</td>
-					<td><input class="input-text" type="text" name="nums" value="${ord.count}"/></td>
-					<td>￥<span name="moylin">${ord.bookprice*ord.count}</span></td>
+					<td class="title">${ord.bookname}<input type="hidden" name="bookid" value="${ord.bookid}"></td>
+					<td>
+						<input class="input-text suan" type="text" name="nums" title="${ord.bookprice}" value="${ord.count}"/>
+					</td>
+					<td>￥<span class="moylin" id="${ord.bookprice}${ord.count}">${ord.bookprice*ord.count}</span></td>
 				</tr>
 				</c:forEach>
 			</table>
 			<div class="button">
-				<h4>总价：￥<span>65.00</span>元</h4>
+				<h4>总价：￥<span id="num">65.00</span>元</h4>
+				<input type="hidden" id="num1" name="num" value=""/>
 				<input class="input-chart" type="submit" name="submit" value="" />
 			</div>
 		</form>
@@ -55,4 +59,34 @@
 
 </div>
 </body>
+<script>
+	$(function () {
+		mo();
+	})
+	function suan(date) {
+		var i=$(date).parent();
+		var td=$(i).next();
+		var span= $(td).has('span')[0].lastChild;
+		var value=date.value;
+		var title=date.title;
+		var s =title+value;
+		var moylin=parseInt(value)*title;
+		span.innerText=moylin;
+		mo();
+	}
+	function mo() {
+		var num=0;
+		var a=$(".moylin")
+		for(var i=0;i<a.length;i++){
+			var int=a[i].innerText
+			num+=parseInt(int);
+		}
+		$("#num").text(num);
+		$("#num1").val(num);
+		$(".suan").focusout(function () {
+			suan(this);
+		})
+	}
+
+</script>
 </html>

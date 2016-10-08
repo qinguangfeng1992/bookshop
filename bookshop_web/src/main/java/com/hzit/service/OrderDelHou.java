@@ -47,4 +47,8 @@ public interface OrderDelHou {
      * 查询用户订单中是否有此书籍
      */
     public Boolean userbookcart(String bookid,String userid);
+    /**
+     * 添加数据进入订单中
+     */
+    public Boolean inr(Integer num,String userid,String bookid,String orderstatu);
 }

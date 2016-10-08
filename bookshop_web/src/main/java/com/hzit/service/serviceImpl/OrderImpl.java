@@ -1,6 +1,7 @@
 package com.hzit.service.serviceImpl;
 
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.Orderdetail;
 import com.hzit.dao.mapper.BookMapper;
 import com.hzit.dao.mapper.OrderMapper;
@@ -10,10 +11,8 @@ import com.hzit.service.OrderDelHou;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -87,6 +86,19 @@ public class OrderImpl implements OrderDelHou {
         else
             return true;
     }
-
+    @Override
+    public Boolean inr(Integer num,String userid,String bookid,String orderstatu){
+        Order order=new Order();
+        order.setBookid(bookid);
+        order.setOrderid(String.valueOf(System.currentTimeMillis()));//id
+        order.setOrderprice(num);//总价
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        order.setOrdertime(format.format(new Date()));//日期
+        order.setUserid(userid);
+        order.setOrderstatu(orderstatu);
+        order.setOrderdelete("1");
+        orderMapper.insertOrder(order);
+        return false;
+    }
 
 }

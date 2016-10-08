@@ -118,12 +118,17 @@ public class HouOrder {
             listbook.add(i,bookvo);
         }
         session.setAttribute("bookvohou",listbook);
-        for(BookVoHou bookVoHou:listbook){
-            System.out.println(bookVoHou.getBookname());
-        }
+
         return "redirect:/hou/totoorderlist";
     }
 
+    @RequestMapping("/orderinr")
+    public String del(@RequestParam("bookid")String  bookid,@RequestParam("num")Integer num){
+        String userid="1";
+        System.out.println("图片:"+bookid+"总价:"+num);
+        orderImpl.inr(num,userid,bookid,"已付款");
+        return "redirect:../shopping-success.html";
+    }
 /**
  * 为分页服务的方法
  */
