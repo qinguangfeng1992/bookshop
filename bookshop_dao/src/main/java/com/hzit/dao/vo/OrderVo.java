@@ -1,5 +1,7 @@
 package com.hzit.dao.vo;
 
+import java.util.List;
+
 /**
  * 
  * @author HOU
@@ -33,6 +35,26 @@ public class OrderVo {
 	 *  用户id
 	 */
 	private String userid;
+
+	public String getPictureurl() {
+		return pictureurl;
+	}
+
+	public void setPictureurl(String pictureurl) {
+		this.pictureurl = pictureurl;
+	}
+
+	private String pictureurl;
+	private List<BookVo> bookVoList;
+
+	public List<BookVo> getBookVoList() {
+		return bookVoList;
+	}
+
+	public void setBookVoList(List<BookVo> bookVoList) {
+		this.bookVoList = bookVoList;
+	}
+
 	/**
 	 * 订单ID
 	 * @param orderid
