@@ -4,6 +4,7 @@ import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.Orderdetail;
+import com.hzit.dao.entity.User;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.BookVoHou;
 import com.hzit.service.BookQin;
@@ -72,7 +73,9 @@ public class HouOrder {
 
     @RequestMapping("/shoppingcart")
     public String gouwu(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session){
-        String userid ="1";//(String) session.getAttribute("");
+        //User user=(User) session.getAttribute("user");//隐藏中
+        //String userids=user.getUserid();
+        String userid ="1";
         List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
         //bookid=new String[]{"1","5","2"};
         if(orderdetail.size()==0){
