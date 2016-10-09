@@ -14,10 +14,9 @@ import java.util.List;
 public interface OrderDelHou {
     /**
      * 删除
-     * @param OrderId
      * @return
      */
-    public Integer deleteOrder(String OrderId);
+    public Integer deleteOrder(String userid,String bookid);
 
     /**
      * 创建一张订单

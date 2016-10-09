@@ -46,7 +46,7 @@
 						<input class="input-text suan" type="text" name="nums" title="${ord.bookprice}" value="${ord.count}"/>
 					</td>
 					<td>￥<span class="moylin" id="${ord.bookprice}${ord.count}">${ord.bookprice*ord.count}</span></td>
-					<td><a href="#">删除</a></td>
+					<td><a href="JavaScript:void(0)" dill="${ord.bookid}" onclick="delids(this)">删除</a></td>
 				</tr>
 				</c:forEach>
 			</table>
@@ -89,6 +89,15 @@
 		$("#num1").val(num);
 		$(".suan").focusout(function () {
 			suan(this);
+		})
+	}
+	function delids(dt) {
+		var s=$(dt).parent().siblings();
+	    s.slideUp("slow");
+		$(dt).parent().slideUp("slow");
+		 var i=$(dt).attr("dill");
+		$.post("del",{"bookid":i},function (date) {
+
 		})
 	}
 

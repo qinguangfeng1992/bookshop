@@ -20,4 +20,5 @@ public interface OrderdetailMapper {
 
 	List<Orderdetail> searchOrderdetailByParams(@Param("map") Map<String, String> map);
 
+	void deleteOrderdetailByid(@Param("map") Map<String, String> map);
 } 

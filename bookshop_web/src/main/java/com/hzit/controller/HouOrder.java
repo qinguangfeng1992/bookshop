@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
@@ -131,6 +133,17 @@ public class HouOrder {
         orderImpl.inr(num,userid,bookid,"已付款");
         return "redirect:../shopping-success.html";
     }
+
+    @RequestMapping("/todel")
+    @ResponseBody
+    public Object deldange(@RequestParam("bookid")String  bookid,HttpSession session){
+        User user=(User) session.getAttribute("user");//隐藏中
+        String userid=user.getUserid();
+        //String userid="1";
+        Integer integer=orderAll.deleteOrder(userid,bookid);
+        return integer;
+    }
+
 /**
  * 为分页服务的方法
  */

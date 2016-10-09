@@ -38,7 +38,7 @@ public class TestHou {
     }
     @Test
     public void update(){
-       orderXie.orderOfuserid("1");
+       orderDelHou.deleteOrder("1","7");
 
 
     }

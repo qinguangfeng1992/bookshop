@@ -26,13 +26,16 @@ public class OrderImpl implements OrderDelHou {
     @Autowired
     OrderdetailMapper orderdetailMapper;
     @Override
-    public Integer deleteOrder(String id) {
-       try {
-           orderMapper.deleteOrderByOrderid(id);
-           return 1;
+    public Integer deleteOrder(String userid,String bookid) {
+        try {
+        Map map=new HashMap();
+        map.put("userid",userid);
+        map.put("bookid",bookid);
+        orderdetailMapper.deleteOrderdetailByid(map);
+        return 1;
        }catch (Exception ex){
            ex.printStackTrace();
-           return -1;
+        return -1;
        }
     }
 

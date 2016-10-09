@@ -50,6 +50,10 @@
         DELETE FROM orderdetail WHERE orderdatailid = #{orderdatailid}
     </delete>
 
+    <delete id="deleteOrderdetailByid" parameterType="map">
+        DELETE FROM orderdetail WHERE bookid = #{map.bookid} AND userid = #{map.userid}
+    </delete>
+
     <update id="updateOrderdetail" parameterType="com.hzit.dao.entity.Orderdetail">
         UPDATE orderdetail
         <set>
