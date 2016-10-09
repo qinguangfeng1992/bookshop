@@ -140,6 +140,13 @@ public class HouOrder {
         User user=(User) session.getAttribute("user");//隐藏中
         String userid=user.getUserid();
         //String userid="1";
+        List<BookVoHou> listbook=(List<BookVoHou>)session.getAttribute("bookvohou");
+        for (int i=0;i<listbook.size();i++){
+            if (listbook.get(i).getBookid().equals(bookid)){
+                listbook.remove(i);
+            }
+        }
+        session.setAttribute("bookvohou",listbook);
         Integer integer=orderAll.deleteOrder(userid,bookid);
         return integer;
     }

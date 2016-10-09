@@ -16,7 +16,7 @@
 			<ul>
 				<li><a href="../bookindex">User首页</a></li>
 				<li><a href="../toorderlist">我的订单</a></li>
-				<li class="current"><a href="../hou/totoorderlist">购物车</a></li>
+				<li class="current"><a href="totoorderlist">购物车</a></li>
 				<li><a href="#">注销</a></li>
 			</ul>
 		</div>
@@ -96,7 +96,7 @@
 	    s.slideUp("slow");
 		$(dt).parent().slideUp("slow");
 		 var i=$(dt).attr("dill");
-		$.post("del",{"bookid":i},function (date) {
+		$.post("todel",{"bookid":i},function (date) {
 
 		})
 	}
