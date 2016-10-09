@@ -1,5 +1,6 @@
 package com.hzit.controller;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.User;
 import com.hzit.dao.vo.OrderVVo;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,10 +25,14 @@ public class OrderController extends BaseController{
     private OrderService orderService;
 
     @RequestMapping("/toorderlist")
-    public String findOrderList(ModelMap modelMap,HttpSession session){
+    public String findOrderList(@RequestParam(name = "page", defaultValue = "0") Integer page,ModelMap modelMap,HttpSession session){
         User user = (User) session.getAttribute("user");
-        List<OrderVVo> orderVVoList=orderService.orderOfuserid(user.getUserid());//查询数据
+       List<OrderVVo> orderVVoList=orderService.orderOfuserid(user.getUserid());//查询当前用户订单
         modelMap.put("olist",orderVVoList);
+        if(page<0) page=0;
+        Page<Order> pages=orderService.findPage(user.getUserid(),page,3);
+        modelMap.put("pages", pages);
+        modelMap.put("currpage",page);
         return "orderlist";
 
     }

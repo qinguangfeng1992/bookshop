@@ -18,11 +18,11 @@ public class LoginController extends BaseController{
     private LoginService loginService;
 
     @RequestMapping("/toindex")
-    public String userLogin(@RequestParam("username")String username,@RequestParam("userpwd") String userpwd,HttpSession session){
+    public String userLogin(@RequestParam(name = "username",defaultValue = "")String username,@RequestParam(name = "userpwd",defaultValue = "") String userpwd,HttpSession session){
         User user=loginService.findUser(username,userpwd);
         if(user!=null){
             session.setAttribute("user",user);
-            return "redirect:/bookindex";
+            return "redirect:/index";
         }else{
             return "redirect:/login.html";
         }

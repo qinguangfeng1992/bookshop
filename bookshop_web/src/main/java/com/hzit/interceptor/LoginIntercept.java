@@ -13,10 +13,13 @@ public class LoginIntercept implements HandlerInterceptor{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         HttpSession session=request.getSession();
+        //如果用户没有登录 拦截
         if(session.getAttribute("username")==null||session.getAttribute("passpwd")==null){
             response.sendRedirect("login.html");
             return false;
         }
+        //请求到登录页面 放行
+        if(request.getServletPath().startsWith("login,html"));
         return  true;
     }
 

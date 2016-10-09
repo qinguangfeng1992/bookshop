@@ -1,10 +1,12 @@
 package com.hzit.service.serviceImpl;
 
+import com.fc.platform.commons.page.Page;
+import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.mapper.OrderMapper;
+import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.OrderVVo;
-import com.hzit.dao.vo.OrderVo;
 import com.hzit.service.OrderDelHou;
 import com.hzit.service.OrderXie;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +58,14 @@ public class OrderService implements OrderXie {
         }
 
         return orderVVoList;
+    }
+
+    @Override
+    public Page<Order> findPage(String userid,int page, int rowcount) {
+        Map map=new HashMap();
+        map.put("userid",userid);
+        PageRequest pg = new PageRequest(page, rowcount);
+        Page<Order> data = orderMapper.searchOrderByParams(map, pg);
+        return data;
     }
 }

@@ -1,3 +1,4 @@
+import com.fc.platform.commons.page.Page;
 import com.hzit.Starter;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.vo.BookVo;
@@ -32,8 +33,17 @@ private BookImpl bookImpl;
         }
     }
     @Test
-    public void findOrderid() {
+    public void login() {
       login.findUser("12",null);
+    }
+    @Test
+    public void fenye() {
+       Page<Order> p= orderXie.findPage("1", 0, 2);
+        for(Order o: p){
+            System.out.println(o.getOrderid());
+        }
+        System.out.println("总页数"+p.getTotalPages());
+        System.out.println("总行数"+p.getTotalElements());
     }
 
 

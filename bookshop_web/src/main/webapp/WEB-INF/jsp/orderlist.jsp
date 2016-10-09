@@ -13,7 +13,7 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li><a href="bookindex">用户：${user.username}</a></li>
+				<li><a href="index">用户：${user.username}</a></li>
 				<li class="current"><a href="toorderlist">我的订单</a></li>
 				<li><a href="hou/totoorderlist">购物车</a></li>
 				<li><a href="logout">注销</a></li>
@@ -50,16 +50,25 @@
 				</tr>
 			</c:forEach>
 			</table>
-		<%--&lt;%&ndash; 分页&ndash;%&gt;
+		<%-- 分页--%>
 		<div class="page-spliter">
-			<a href="oderspliter?page=${currpage-1}">&lt;&lt;</a>
-			<a href="oderspliter">首页</a>
-			<c:forEach var="p" begin="0" end="${list.totalPages-1}">
-				<a href="oderspliter?page=${p}">${p+1}</a>
+			<a href="toorderlist?page=${currpage-1}">&lt;&lt;</a>
+			<a href="toorderlist">首页</a>
+			<c:forEach var="p" begin="0" end="${pages.totalPages-1}">
+				<a href="toorderlist?page=${p}">${p+1}</a>
+			</c:forEach>
+			<a href="toorderlist?page=${pages.totalPages-1}">尾页</a>
+			<a href="toorderlist?page=${currpage+1}">&gt;&gt;</a>
+		</div>
+		<%--<div class="page-spliter">
+			<a href="#">&lt;&lt;</a>
+			<a href="#">首页</a>
+			<c:forEach var="p" begin="0" end="5">
+			<a href="#">p</a>
 			</c:forEach>
 			<span>...</span>
-			<a href="oderspliter?page=${list.totalPages-1}">尾页</a>
-			<a href="oderspliter?page=${currpage+1}">&gt;&gt;</a>
+			<a href="#">尾页</a>
+			<a href="#">&gt;&gt;</a>
 		</div>--%>
 			<div class="button"><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /></div>
 	</div>
