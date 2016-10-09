@@ -2,6 +2,7 @@ import com.hzit.Starter;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.OrderVo;
+import com.hzit.service.Login;
 import com.hzit.service.OrderXie;
 import com.hzit.service.serviceImpl.BookImpl;
 import org.junit.Test;
@@ -21,6 +22,8 @@ public class Testxss {
 private BookImpl bookImpl;
     @Autowired
     OrderXie orderXie;
+    @Autowired
+    Login login;
     @Test
     public void testFindBookAll() {
        List<BookVo> list= bookImpl.findBookAll();
@@ -30,7 +33,7 @@ private BookImpl bookImpl;
     }
     @Test
     public void findOrderid() {
-
+      login.findUser("12",null);
     }
 
 
