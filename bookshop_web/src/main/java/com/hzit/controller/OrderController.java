@@ -25,7 +25,7 @@ public class OrderController extends BaseController{
     @RequestMapping("/toorderlist")
     public String findOrderList(ModelMap modelMap,HttpSession session){
         User user = (User) session.getAttribute("user");
-        List<OrderVVo> orderVVoList=orderService.orderOfuserid("1");//查询数据
+        List<OrderVVo> orderVVoList=orderService.orderOfuserid(user.getUserid());//查询数据
         modelMap.put("olist",orderVVoList);
         return "orderlist";
 

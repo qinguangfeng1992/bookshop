@@ -73,9 +73,9 @@ public class HouOrder {
 
     @RequestMapping("/shoppingcart")
     public String gouwu(@RequestParam(name = "bookid",defaultValue = "")String[] bookid,HttpSession session){
-        //User user=(User) session.getAttribute("user");//隐藏中
-        //String userids=user.getUserid();
-        String userid ="1";
+        User user=(User) session.getAttribute("user");//隐藏中
+        String userid=user.getUserid();
+        //String userid ="1";
         List<Orderdetail> orderdetail=orderAll.Aorder(userid);//查询用户订单
         //bookid=new String[]{"1","5","2"};
         if(orderdetail.size()==0){
@@ -123,8 +123,10 @@ public class HouOrder {
     }
 
     @RequestMapping("/orderinr")
-    public String del(@RequestParam("bookid")String  bookid,@RequestParam("num")Integer num){
-        String userid="1";
+    public String del(@RequestParam("bookid")String  bookid,@RequestParam("num")Integer num,HttpSession session){
+        User user=(User) session.getAttribute("user");//隐藏中
+        String userid=user.getUserid();
+        //String userid="1";
         System.out.println("图片:"+bookid+"总价:"+num);
         orderImpl.inr(num,userid,bookid,"已付款");
         return "redirect:../shopping-success.html";
