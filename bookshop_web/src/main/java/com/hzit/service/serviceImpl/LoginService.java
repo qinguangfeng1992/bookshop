@@ -23,16 +23,26 @@ public class LoginService implements Login{
 
     @Override
     public User findUser(String username,String userpwd) {
-        Map m=new HashMap();
-        m.put("username",username);
-        m.put("userpwd",userpwd);
-        List<User> list=userMapper.searchUserByParams(m);
-        if(list!=null&&list.size()>0){
-            return list.get(0);
-        }else{
-            return null;
+        if (!username.equals("")) {
+            Map m = new HashMap();
+            m.put("username", username);
+            m.put("userpwd", userpwd);
+            List<User> list = userMapper.searchUserByParams(m);
+            if (list.size() > 0) {
+                return list.get(0);
+            } else {
+                return null;
+            }
         }
+        return null;
     }
+
+
+   /* @Override
+    public User findUser(String username,String userpwd) {
+        User user=userMapper.findOneUser(username,userpwd);
+        return user;
+    }*/
 
 
     @Override
