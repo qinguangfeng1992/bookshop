@@ -118,6 +118,9 @@ public class OrderImpl implements OrderDelHou {
             booknumber.setUserid(userid);
             booknumberMapper.insertBooknumber(booknumber);
         }
+        Map m=new HashMap();
+        m.put("userid",userid);
+        orderdetailMapper.deleteOrderdetailByid(m);
         return false;
     }
     @Override
