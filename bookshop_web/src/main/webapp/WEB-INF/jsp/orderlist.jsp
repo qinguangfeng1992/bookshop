@@ -16,11 +16,12 @@
 	position: absolute;
 	z-index: 2;
 	font-family: "微软雅黑";
-	color: #acacac;
+	color: #FFF;
 	font-size: 20px;
 	top: -8px;
 	height: 20px;
 	border: 1px solid skyblue;
+	background-color: #39F;
 }
 </style>
 </head>

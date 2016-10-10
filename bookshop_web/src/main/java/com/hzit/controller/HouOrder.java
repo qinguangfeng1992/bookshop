@@ -125,12 +125,16 @@ public class HouOrder {
     }
 
     @RequestMapping("/orderinr")
-    public String del(@RequestParam("bookid")String  bookid,@RequestParam("num")Integer num,HttpSession session,@RequestParam("nums") String nums){
-        User user=(User) session.getAttribute("user");//隐藏中
-        String userid=user.getUserid();
-        //String userid="1";
-        //System.out.println("图片:"+bookid+"总价:"+num);
-        orderImpl.inr(num,userid,bookid,"已付款",nums);
+    public String del(@RequestParam(name="bookid",defaultValue = "0")String  bookid,@RequestParam(name="num",defaultValue = "0")Integer num,HttpSession session,@RequestParam(name="nums",defaultValue = "0") String nums){
+        if(!(bookid.equals("0")||nums.equals("0")||num==0)) {
+            User user = (User) session.getAttribute("user");//隐藏中
+            String userid = user.getUserid();
+            //String userid="1";
+            //System.out.println("图片:"+bookid+"总价:"+num);
+            orderImpl.inr(num, userid, bookid, "已付款", nums);
+            session.removeAttribute("bookvohou");
+        }else
+           return "redirect:/index";
         return "redirect:../shopping-success.html";
     }
 
@@ -145,6 +149,11 @@ public class HouOrder {
             if (listbook.get(i).getBookid().equals(bookid)){
                 listbook.remove(i);
             }
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         session.setAttribute("bookvohou",listbook);
         Integer integer=orderAll.deleteOrder(userid,bookid);

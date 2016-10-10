@@ -47,7 +47,7 @@
 
     
     <delete id="deleteOrderdetailByOrderdatailid" parameterType="String">
-        DELETE FROM orderdetail WHERE orderdatailid = #{orderdatailid}
+        DELETE FROM orderdetail WHERE userid = #{map.userid}
     </delete>
 
     <delete id="deleteOrderdetailByid" parameterType="map">

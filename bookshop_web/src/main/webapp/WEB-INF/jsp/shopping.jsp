@@ -14,7 +14,7 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li><a href="../bookindex">User首页</a></li>
+				<li><a href="../index">User首页</a></li>
 				<li><a href="../toorderlist">我的订单</a></li>
 				<li class="current"><a href="totoorderlist">购物车</a></li>
 				<li><a href="#">注销</a></li>
@@ -97,7 +97,8 @@
 		$(dt).parent().slideUp("slow");
 		 var i=$(dt).attr("dill");
 		$.post("todel",{"bookid":i},function (date) {
-
+			s.remove();
+			$(dt).parent().remove();
 		})
 	}
 
