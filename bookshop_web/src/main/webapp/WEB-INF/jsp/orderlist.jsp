@@ -52,13 +52,25 @@
 			</table>
 		<%-- 分页--%>
 		<div class="page-spliter">
-			<a href="toorderlist?page=${currpage-1}">&lt;&lt;</a>
+			<a href="toorderlist?page=
+            <c:if test="${page>0}">
+                ${page-1}
+            </c:if>
+            <c:if test="${page<0}">0
+            </c:if>"
+            >&lt;&lt;</a>
 			<a href="toorderlist">首页</a>
-			<c:forEach var="p" begin="0" end="${pages.totalPages-1}">
+			<c:forEach var="p" begin="0" end="${zoopage-1}">
 				<a href="toorderlist?page=${p}">${p+1}</a>
 			</c:forEach>
-			<a href="toorderlist?page=${pages.totalPages-1}">尾页</a>
-			<a href="toorderlist?page=${currpage+1}">&gt;&gt;</a>
+			<a href="toorderlist?page=${zoopage-1}">尾页</a>
+			<a href="toorderlist?page=
+			  <c:if test="${page<zoopage-1}">
+			  ${page+1}
+              </c:if>
+              <c:if test="${page>zoopage-1}">${zoopage-1}
+              </c:if>
+            ">&gt;&gt;</a>
 		</div>
 		<%--<div class="page-spliter">
 			<a href="#">&lt;&lt;</a>

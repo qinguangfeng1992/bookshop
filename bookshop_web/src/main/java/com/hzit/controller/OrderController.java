@@ -1,6 +1,5 @@
 package com.hzit.controller;
 
-import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.entity.User;
 import com.hzit.dao.vo.OrderVVo;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -25,14 +25,29 @@ public class OrderController extends BaseController{
     private OrderService orderService;
 
     @RequestMapping("/toorderlist")
-    public String findOrderList(@RequestParam(name = "page", defaultValue = "0") Integer page,ModelMap modelMap,HttpSession session){
+    public String findOrderList(ModelMap modelMap,HttpSession session,@RequestParam(name="page",defaultValue = "0") Integer page){
         User user = (User) session.getAttribute("user");
-       List<OrderVVo> orderVVoList=orderService.orderOfuserid(user.getUserid());//查询当前用户订单
-        modelMap.put("olist",orderVVoList);
-        if(page<0) page=0;
-        Page<Order> pages=orderService.findPage(user.getUserid(),page,3);
-        modelMap.put("pages", pages);
-        modelMap.put("currpage",page);
+        List<OrderVVo> orderVVoList=orderService.orderOfuserid(user.getUserid());//查询数据
+        Integer integer=0;
+        Integer add=4;
+        Integer pages=0;
+        if(orderVVoList.size()%4==0){
+            integer=orderVVoList.size()/4;
+        }
+        else {
+            Integer kl=orderVVoList.size()/4;
+            integer=kl+1;
+            if(page==kl)
+             add=orderVVoList.size()%4;
+        }
+        if (page==0){}else{pages=page*4;}
+        List<OrderVVo> listList=new LinkedList<OrderVVo>();
+        for (int i=pages;i<pages+add;i++) {
+            listList.add(orderVVoList.get(i));
+        }
+        modelMap.put("olist", listList);
+        modelMap.put("zoopage",integer);
+        modelMap.put("page",page);
         return "orderlist";
 
     }
