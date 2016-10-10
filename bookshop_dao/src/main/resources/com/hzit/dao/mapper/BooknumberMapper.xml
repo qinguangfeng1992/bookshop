@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.BooknumberMapper">
+
+    <sql id="booknumberBaseColumnSql">
+        bookid,
+        id,
+        numt,
+        userid
+    </sql>
+
+    <sql id="booknumberBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookid)">
+                    bookid = #{map.bookid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.id)">
+                    AND id = #{map.id}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.numt)">
+                    AND numt = #{map.numt}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                    AND userid = #{map.userid}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertBooknumber" parameterType="com.hzit.dao.entity.Booknumber">
+        INSERT INTO booknumber(
+        <include refid="booknumberBaseColumnSql"/>
+        )VALUES(
+            #{bookid},
+            #{id},
+            #{numt},
+            #{userid}
+        )
+    </insert>
+
+    
+    <delete id="deleteBooknumberById" parameterType="String">
+        DELETE FROM booknumber WHERE id = #{id}
+    </delete>
+
+    <update id="updateBooknumber" parameterType="com.hzit.dao.entity.Booknumber">
+        UPDATE booknumber
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookid)">
+                bookid = #{bookid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(numt)">
+                numt = #{numt} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userid)">
+                userid = #{userid} ,
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="searchBooknumberByParams" parameterType="map" resultMap="booknumberMap">
+        SELECT
+        <include refid="booknumberBaseColumnSql"/>
+        FROM booknumber
+        <include refid="booknumberBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Booknumber" id="booknumberMap">
+        <id column="id" property="id"/>
+        <result column="bookid" property="bookid"/>
+        <result column="numt" property="numt"/>
+        <result column="userid" property="userid"/>
+    </resultMap>
+
+</mapper>

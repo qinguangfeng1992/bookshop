@@ -6,6 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link type="text/css" rel="stylesheet" href="css/style.css" />
+<style type="text/css">
+.fudong {
+	position: relative;
+	height: 0px;
+	width: 0px;
+}
+.cshi {
+	position: absolute;
+	z-index: 2;
+	font-family: "微软雅黑";
+	color: #acacac;
+	font-size: 20px;
+	top: -8px;
+	height: 20px;
+	border: 1px solid skyblue;
+}
+</style>
 </head>
 <body>
 <div id="header" class="wrap">
@@ -15,7 +32,7 @@
 			<ul>
 				<li><a href="index">用户：${user.username}</a></li>
 				<li class="current"><a href="toorderlist">我的订单</a></li>
-				<li><a href="hou/totoorderlist">购物车</a></li>
+			  <li><a href="hou/totoorderlist">购物车</a></li>
 				<li><a href="logout">注销</a></li>
 			</ul>
 		</div>
@@ -31,7 +48,7 @@
 					<th class="orderId">订单编号</th>
 					<th>订单商品</th>
 					<th class="userName">收货人</th>
-					<th class="price">订单金额</th>
+		      <th class="price">订单金额</th>
 					<th class="createTime">下单时间</th>
 					<th class="status">订单状态</th>
 				</tr>
@@ -40,7 +57,8 @@
 					<td style="text-align: left">${order.orderid}</td>
 					<td class="thumb">
 						<c:forEach items="${order.bookjihe}" var="bookurl">
-					<img height="100px" src="${bookurl.bookurl}" alt=""/>
+						<span class="fudong"><span class="cshi">${bookurl.booknumber}</span>
+					<img height="100px" src="${bookurl.bookurl}" alt=""/></span>
 						</c:forEach>
 					</td>
 					<td>${sessionScope.user.username}</td>

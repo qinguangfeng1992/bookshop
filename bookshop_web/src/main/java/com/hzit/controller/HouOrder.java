@@ -125,12 +125,12 @@ public class HouOrder {
     }
 
     @RequestMapping("/orderinr")
-    public String del(@RequestParam("bookid")String  bookid,@RequestParam("num")Integer num,HttpSession session){
+    public String del(@RequestParam("bookid")String  bookid,@RequestParam("num")Integer num,HttpSession session,@RequestParam("nums") String nums){
         User user=(User) session.getAttribute("user");//隐藏中
         String userid=user.getUserid();
         //String userid="1";
-        System.out.println("图片:"+bookid+"总价:"+num);
-        orderImpl.inr(num,userid,bookid,"已付款");
+        //System.out.println("图片:"+bookid+"总价:"+num);
+        orderImpl.inr(num,userid,bookid,"已付款",nums);
         return "redirect:../shopping-success.html";
     }
 

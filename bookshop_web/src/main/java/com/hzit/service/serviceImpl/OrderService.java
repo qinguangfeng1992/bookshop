@@ -5,6 +5,7 @@ import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Order;
 import com.hzit.dao.mapper.OrderMapper;
+import com.hzit.dao.vo.BookVVo;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.dao.vo.OrderVVo;
 import com.hzit.service.OrderDelHou;
@@ -40,10 +41,10 @@ public class OrderService implements OrderXie {
         List<OrderVVo> orderVVoList=new ArrayList<OrderVVo>();
         for (Order order:orderList){
             OrderVVo orderVVo=new OrderVVo();
-            List<Book> booklist=new ArrayList<Book>();
+            List<BookVVo> booklist=new ArrayList<BookVVo>();
             String[] as = order.getBookid().split(",");
             for (int i = 0; i <as.length ; i++) {
-                Book book=orderDelHou.bookA(as[i]);
+                BookVVo book=orderDelHou.bookVVoA(as[i],userid);
                 booklist.add(book);
             }
             orderVVo.setBookjihe(booklist);//拿到用户图片组

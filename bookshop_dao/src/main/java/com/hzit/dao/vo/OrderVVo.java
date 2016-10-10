@@ -41,13 +41,13 @@ public class OrderVVo {
 	/**
 	 *  图书ID集合
 	 */
-	private List<Book> bookjihe;
+	private List<BookVVo> bookjihe;
 
-	public List<Book> getBookjihe() {
+	public List<BookVVo> getBookjihe() {
 		return bookjihe;
 	}
 
-	public void setBookjihe(List<Book> bookjihe) {
+	public void setBookjihe(List<BookVVo> bookjihe) {
 		this.bookjihe = bookjihe;
 	}
 

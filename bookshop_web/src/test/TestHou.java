@@ -1,6 +1,7 @@
 import com.hzit.Starter;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.entity.Orderdetail;
+import com.hzit.dao.vo.BookVVo;
 import com.hzit.dao.vo.BookVo;
 import com.hzit.service.OrderDelHou;
 
@@ -38,7 +39,8 @@ public class TestHou {
     }
     @Test
     public void update(){
-       orderDelHou.deleteOrder("1","7");
+       BookVVo bookVVo=orderDelHou.bookVVoA("2","1");
+        System.out.println(bookVVo.getBookurl()+","+bookVVo.getBooknumber());
 
 
     }
